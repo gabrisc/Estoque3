@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Estoque3" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/DarkGreen</item>
+        <item name="colorPrimaryVariant">@color/DarkGreenVariant</item>
+        <item name="colorOnPrimary">@color/PrimaryColorVariant</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/DarkGreen</item>
+        <item name="colorSecondaryVariant">@color/DarkGreenVariant</item>
+        <item name="colorOnSecondary">@color/DarkGray</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
+        <!-- Customize your theme here. -->
+
+
+    </style>
+
+    <style name="Theme.Estoque3.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Estoque3.Toggle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:background">@color/BackgroundColor</item>
+    </style>
+
+    <style name="Theme.Estoque3.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Estoque3.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

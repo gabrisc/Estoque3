@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgroundColor"
+    android:scrollbarStyle="outsideInset"
+    tools:context=".Activity.AddProductActivity">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/ToggleGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/PrimaryColorVariant"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNameProduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ToggleButtonService"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Serviço" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ToggleButtonProduct"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="produto" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rouded_button"
+        android:onClick="ValidFields"
+        android:text="Cadastrar Produto"
+        android:textColor="@color/DarkGray"
+        android:textColorHint="@color/DarkGray"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantity"
+        app:layout_constraintStart_toStartOf="@+id/seekBarQuantity"
+        app:layout_constraintTop_toBottomOf="@+id/counter" />
+
+    <EditText
+        android:id="@+id/editTextSellValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_button"
+        android:ems="10"
+        android:hint="Valor de venda"
+        android:inputType="numberDecimal"
+        android:paddingLeft="10dp"
+        android:textColor="@color/DarkGray"
+        android:textColorHint="@color/DarkGray"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextBuyValue"
+        app:layout_constraintStart_toStartOf="@+id/editTextBuyValue"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBuyValue" />
+
+    <EditText
+        android:id="@+id/editTextNameProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rouded_button"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="@color/DarkGray"
+        android:textColorHint="@color/DarkGray"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <EditText
+        android:id="@+id/editTextBuyValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_button"
+        android:ems="10"
+        android:hint="Custo"
+        android:inputType="numberDecimal"
+        android:paddingLeft="10dp"
+        android:textColor="@color/DarkGray"
+        android:textColorHint="@color/DarkGray"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNameProduct"
+        app:layout_constraintStart_toStartOf="@+id/editTextNameProduct"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameProduct" />
+
+    <SeekBar
+        android:id="@+id/seekBarQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:max="100"
+        android:progress="1"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_button"
+        android:gravity="center"
+        android:text="Quantidade "
+        android:textColorHint="@color/DarkGray"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSellValue"
+        app:layout_constraintStart_toStartOf="@+id/editTextSellValue"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSellValue" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button_delete"
+        android:onClick="cancelRegistrer"
+        android:text="Cancelar"
+        android:textColor="#90FB0000"
+        android:textColorHighlight="#FF0000"
+        android:textColorHint="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="@color/DarkGreenVariant"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantity"
+        app:layout_constraintStart_toStartOf="@+id/seekBarQuantity"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarQuantity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
