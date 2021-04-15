@@ -5,11 +5,17 @@ import androidx.annotation.NonNull;
 import com.example.estoque3.util.Base64Custom;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.estoque3.util.FireBaseConfig.firebaseAuth;
-import static com.example.estoque3.util.FireBaseConfig.firebaseDbReferenceProductPath;
+import static com.example.estoque3.util.FireBaseConfig.firebaseInstance;
 
-public class Product extends EconomicOperation {
+public class Product{
     private int quantity;
     private String id;
     private String Name;
@@ -30,7 +36,12 @@ public class Product extends EconomicOperation {
     }
 
     public String save(){
-        firebaseDbReferenceProductPath.child(this.getIdUser()).child(String.valueOf(this.id)).setValue(this)
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("PRODUCTS")
+                .child(String.valueOf(this.getId()))
+                .setValue(this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -41,12 +52,44 @@ public class Product extends EconomicOperation {
     }
 
     public String remove(){
-        firebaseDbReferenceProductPath.child(this.getIdUser()).child(this.id).removeValue();
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("PRODUCTS")
+                .child(String.valueOf(this.getId())).removeValue();
         return "Produto Removido";
     }
 
+    public static List<Product> findAll(){
+        List<Product> listProduct= new ArrayList<>();
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("PRODUCTS").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listProduct.clear();
+                for (DataSnapshot ds: snapshot.getChildren()){
+                    Product productTemp = ds.getValue(Product.class);
+                    listProduct.add(productTemp);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                String x = String.valueOf(error);
+            }
+        });
+        return listProduct;
+    }
+
     public String update(){
-        firebaseDbReferenceProductPath.child(String.valueOf(this.id)).setValue(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("PRODUCTS")
+                .child(String.valueOf(this.getId())).setValue(this).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             mensage= "Produto Atualizado";

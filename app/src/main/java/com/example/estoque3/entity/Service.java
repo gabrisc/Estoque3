@@ -5,9 +5,9 @@ import com.example.estoque3.util.Base64Custom;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import static com.example.estoque3.util.FireBaseConfig.firebaseAuth;
-import static com.example.estoque3.util.FireBaseConfig.firebaseDbReferenceRootPath;
+import static com.example.estoque3.util.FireBaseConfig.firebaseInstance;
 
-public class Service extends EconomicOperation {
+public class Service {
     private String id;
     private String Name;
     private double SealValue;
@@ -22,11 +22,15 @@ public class Service extends EconomicOperation {
         this.type = type;
     }
 
-    @Override
+    public Service() {
+    }
+
     public String save() {
-        firebaseDbReferenceRootPath.child("SERVICES")
-                .child(this.getIdUser())
-                .child(String.valueOf(this.id))
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("SERVICES")
+                .child(String.valueOf(this.getId()))
                 .setValue(this).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -36,9 +40,13 @@ public class Service extends EconomicOperation {
         return mensage;
     }
 
-    @Override
+
     public String update() {
-        firebaseDbReferenceRootPath.child("SERVICES").child(getIdUser()).child(String.valueOf(this.id)).setValue(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("SERVICES")
+                .child(String.valueOf(this.getId())).setValue(this).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 mensage = "Serviço Atualizado";
@@ -47,9 +55,12 @@ public class Service extends EconomicOperation {
     return mensage;
     }
 
-    @Override
     public String remove() {
-        firebaseDbReferenceRootPath.child("SERVICES").child(this.getIdUser()).child(this.id).removeValue();
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("ProductsAndServices")
+                .child("SERVICES")
+                .child(String.valueOf(this.getId())).removeValue();
         return "Serviço Removido";
     }
 

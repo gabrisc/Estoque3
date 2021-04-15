@@ -98,7 +98,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rouded_button"
         android:ems="10"
-        android:hint="Custo"
+        android:hint="Custo/Despesas"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"
         android:textColor="@color/DarkGray"

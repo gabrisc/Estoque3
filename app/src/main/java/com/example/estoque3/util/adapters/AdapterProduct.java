@@ -1,4 +1,4 @@
-package com.example.estoque3.util;
+package com.example.estoque3.util.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.estoque3.R;
 import com.example.estoque3.entity.Product;
+import com.example.estoque3.entity.Service;
 
 import java.util.List;
 
 public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHolder> {
     private List<Product> produtosList;
+    private List<Service> serviceList;
     private Context context;
     private OnProductListerner monProductListerner;
 
@@ -25,6 +27,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
         this.context = context;
         this.monProductListerner = onProductListerner;
     }
+
 
     @NonNull
     @Override

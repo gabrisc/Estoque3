@@ -13,7 +13,7 @@ import android.os.Bundle;
 import com.example.estoque3.R;
 import com.example.estoque3.entity.Product;
 import com.example.estoque3.ui.main.PageViewModel;
-import com.example.estoque3.util.AdapterProduct;
+import com.example.estoque3.util.adapters.AdapterProduct;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -24,7 +24,7 @@ import java.util.List;
 import static com.example.estoque3.entity.Product.getIdUser;
 import static com.example.estoque3.util.FireBaseConfig.firebaseDbReference;
 
-public class AddSaleActivity extends AppCompatActivity implements AdapterProduct.OnProductListerner{
+public class AddSaleActivity extends AppCompatActivity implements AdapterProduct.OnProductListerner {
 
     private PageViewModel pageViewModel;
     private static final String ARG_SECTION_NUMBER = "2";
@@ -56,7 +56,7 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterProduct
             }
         });
 
-        adapterProduct= new AdapterProduct(listProduct,this,this);
+        //adapterProduct= new AdapterProduct(listProduct,this,this);
         recyclerView= findViewById(R.id.recyclerViewprodutos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);

@@ -6,17 +6,11 @@ import com.example.estoque3.Activity.AddProductActivity;
 import com.example.estoque3.Activity.AddSaleActivity;
 import com.example.estoque3.R;
 import com.example.estoque3.TestActivity;
-import com.example.estoque3.entity.Product;
-import com.example.estoque3.ui.main.PageViewModel;
-import com.example.estoque3.util.AdapterProduct;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.estoque3.ui.main.SectionsPagerAdapter;
 

@@ -1,4 +1,4 @@
-package com.example.estoque3.ui.main;
+ package com.example.estoque3.ui.main;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,18 +18,19 @@ import android.widget.RadioGroup;
 
 import com.example.estoque3.Activity.UpdateProductActivity;
 import com.example.estoque3.R;
+import com.example.estoque3.entity.EconomicOperation;
 import com.example.estoque3.entity.Product;
-import com.example.estoque3.util.AdapterProduct;
+import com.example.estoque3.entity.Service;
+import com.example.estoque3.util.adapters.AdapterProduct;
+import com.example.estoque3.util.adapters.AdapterService;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.estoque3.entity.Product.getIdUser;
-import static com.example.estoque3.util.FireBaseConfig.firebaseDbReference;
-import static com.example.estoque3.util.FireBaseConfig.firebaseDbReferenceRootPath;
+import static com.example.estoque3.util.FireBaseConfig.firebaseInstance;
 
 
 public class ProductFragment extends Fragment implements AdapterProduct.OnProductListerner{
@@ -43,6 +44,8 @@ public class ProductFragment extends Fragment implements AdapterProduct.OnProduc
     private RecyclerView recyclerView;
     private RadioGroup radioGroup;
     private RadioButton radioProduct,radioService,radioTodos;
+    private AdapterService adapterService;
+    private List<Service> serviceList= new ArrayList<>();
 
     public ProductFragment() {}
 
@@ -68,24 +71,31 @@ public class ProductFragment extends Fragment implements AdapterProduct.OnProduc
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-        radioProduct= view.findViewById(R.id.radioButton4);
-        radioService= view.findViewById(R.id.radioButton2);
-        radioTodos=view.findViewById(R.id.radioButton3);
-
+        radioProduct = view.findViewById(R.id.radioButton4);
+        radioService = view.findViewById(R.id.radioButton2);
         radioGroup = view.findViewById(R.id.radioGroup);
+        recyclerView = view.findViewById(R.id.recyclerViewprod);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setHasFixedSize(true);
 
+        adapterService =  new AdapterService(serviceList, view.getContext(),this::onProductClick);
+        adapterProduct= new AdapterProduct(listProduct,view.getContext(), this::onProductClick);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (radioProduct.getId() == checkedId){
 
-                firebaseDbReference.child("ProductsAndServices").child("PRODUCTS").child(getIdUser()).addValueEventListener(new ValueEventListener() {
+                firebaseInstance.getReference()
+                        .child(getIdUser())
+                        .child("ProductsAndServices")
+                        .child("PRODUCTS").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         listProduct.clear();
                         for (DataSnapshot ds: snapshot.getChildren()){
                             Product productTemp = ds.getValue(Product.class);
                             listProduct.add(productTemp);
+
                         }
                         adapterProduct.notifyDataSetChanged();
                     }
@@ -95,26 +105,28 @@ public class ProductFragment extends Fragment implements AdapterProduct.OnProduc
                         String x = String.valueOf(error);
                     }
                 });
-
+                recyclerView.setAdapter(adapterProduct);
             }else if (radioService.getId() == checkedId){
-
-            }else if (radioTodos.getId() == checkedId){
-
-            }
-
-            }
-        });
-
-
-
-
-
-        adapterProduct= new AdapterProduct(listProduct,view.getContext(), this::onProductClick);
-        recyclerView= view.findViewById(R.id.recyclerViewprod);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterProduct);
-
+                firebaseInstance.getReference()
+                        .child(getIdUser())
+                        .child("ProductsAndServices")
+                        .child("SERVICES").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        serviceList.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            Service service = ds.getValue(Service.class);
+                            serviceList.add(service);
+                        }
+                        adapterService.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        String x = String.valueOf(error);
+                    }
+                });
+                recyclerView.setAdapter(adapterService);
+            }}});
         return view;
     }
 
