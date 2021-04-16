@@ -23,6 +23,7 @@ public class Product{
     private double ExpenseValue;
     private String type;
     private String mensage;
+    private double contributionValue;
 
     public Product(int quantity, String name, double sealValue, double expenseValue, String type) {
         this.quantity = quantity;
