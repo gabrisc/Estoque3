@@ -6,4 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fluxo de caixa"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="346dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saidas"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrada"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="372dp" />
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="199dp"
+        android:layout_height="56dp"
+        android:text="Despesas"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="546dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Investimentos"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="437dp" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="190dp"
+        android:layout_height="56dp"
+        android:text="Custos"
+        tools:layout_editor_absoluteX="214dp"
+        tools:layout_editor_absoluteY="546dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fundo de emergenci financeira"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="299dp" />
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="394dp"
+        android:layout_height="52dp"
+        android:text="Fundo Empresarial"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="602dp" />
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="411dp"
+        android:layout_height="78dp"
+        android:text="Gastos Empresariais "
+        tools:layout_editor_absoluteY="654dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
