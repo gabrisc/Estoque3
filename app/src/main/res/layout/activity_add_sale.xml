@@ -68,7 +68,7 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_weight="1"
         android:background="@drawable/rouded_button"
         android:ems="10"
@@ -80,23 +80,6 @@
         app:layout_constraintEnd_toEndOf="@+id/ToggleGroup"
         app:layout_constraintStart_toStartOf="@+id/ToggleGroup"
         app:layout_constraintTop_toBottomOf="@+id/ToggleGroup" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:background="@drawable/rouded_button"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Data"
-        android:inputType="date"
-        android:textColorHint="@color/DarkGray"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/ToggleGroup"
@@ -145,15 +128,25 @@
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewprodutos"
+        android:id="@+id/recyclerViewprodutosavenda"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="data"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/ToggleGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

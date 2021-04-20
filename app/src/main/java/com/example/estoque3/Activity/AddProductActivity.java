@@ -10,8 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.estoque3.Activity.MainScreens.MainActivity;
 import com.example.estoque3.R;
-import com.example.estoque3.entity.Product;
-import com.example.estoque3.entity.Service;
+import com.example.estoque3.entity.EconomicOperation;
 import com.example.estoque3.util.TypeOfProduct;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -87,30 +86,23 @@ public class AddProductActivity extends AppCompatActivity {
         }else if (type==null){
             Toast toast=Toast. makeText(getApplicationContext(),"Escolha um tipo",Toast. LENGTH_SHORT);
             toast. show();
-        }else if (type==String.valueOf(TypeOfProduct.PRODUTO)){
-            saveProduct(new Product(stringToInteger(counter.getText().toString()),
-                    productName.getText().toString(),
-                    Double.parseDouble(sellValue.getText().toString()),
-                    Double.parseDouble(buyValue.getText().toString()),
-                    type));
         }else{
-            saveService(new Service(productName.getText().toString(),
+            saveProduct(new EconomicOperation(productName.getText().toString(),
                     Double.parseDouble(sellValue.getText().toString()),
                     Double.parseDouble(buyValue.getText().toString()),
-                    type));
-
+                    type,
+                    stringToInteger(counter.getText().toString()),
+                    calcContributionValue(Double.parseDouble(sellValue.getText().toString()),Double.parseDouble(buyValue.getText().toString()))));
         }
     }
 
-    private void saveProduct(Product product) {
-        product.setId(firebaseDbReference.push().getKey());
-        Toast.makeText(AddProductActivity.this, product.save(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    private double calcContributionValue(double sellValue,double buyValue) {
+        return sellValue-buyValue;
     }
 
-    private void saveService(Service service){
-        service.setId(firebaseDbReference.push().getKey());
-        Toast.makeText(AddProductActivity.this, service.save(), Toast.LENGTH_SHORT).show();
+    private void saveProduct(EconomicOperation economicOperation) {
+        economicOperation.setId(firebaseDbReference.push().getKey());
+        Toast.makeText(AddProductActivity.this, economicOperation.save(), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 

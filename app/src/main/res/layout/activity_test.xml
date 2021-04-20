@@ -6,74 +6,122 @@
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="390dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fluxo de caixa"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="346dp" />
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Saidas"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="409dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Entrada"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="372dp" />
-
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="199dp"
-        android:layout_height="56dp"
-        android:text="Despesas"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="546dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="Investimentos"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="437dp" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="190dp"
-        android:layout_height="56dp"
-        android:text="Custos"
-        tools:layout_editor_absoluteX="214dp"
-        tools:layout_editor_absoluteY="546dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="lucro na ultima semana"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="412dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rouded_button"
+                android:text="Custos"
+                android:textColor="@color/DarkGray" />
+
+            <Button
+                android:id="@+id/button15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rouded_button"
+                android:text="Despesas"
+                android:textColor="@color/DarkGray" />
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fundo de emergenci financeira"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="299dp" />
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="90dp" />
 
     <Button
         android:id="@+id/button16"
         android:layout_width="394dp"
         android:layout_height="52dp"
         android:text="Fundo Empresarial"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="602dp" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="586dp" />
 
     <Button
         android:id="@+id/button17"
         android:layout_width="411dp"
         android:layout_height="78dp"
         android:text="Gastos Empresariais "
-        tools:layout_editor_absoluteY="654dp" />
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="646dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
