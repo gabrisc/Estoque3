@@ -31,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         if(position==0){
            fragment = PlaceholderFragment.newInstance(1);
         } else if (position==1){
-            fragment = ProductFragment.newInstance(2);
+            fragment = EconomicOperationFragment.newInstance(2);
         }else if (position==2){
             fragment = SalesFragment.newInstance(3);
         }
