@@ -2,8 +2,8 @@ package com.example.estoque3.Activity.MainScreens;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.example.estoque3.Activity.AddProductActivity;
-import com.example.estoque3.Activity.AddSaleActivity;
+import com.example.estoque3.Activity.AddActivitys.AddProductActivity;
+import com.example.estoque3.Activity.AddActivitys.AddSaleActivity;
 import com.example.estoque3.R;
 import com.example.estoque3.TestActivity;
 import com.google.android.material.tabs.TabLayout;

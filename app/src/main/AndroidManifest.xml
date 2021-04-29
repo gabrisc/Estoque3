@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Estoque3.NoActionBar">
-        <activity android:name=".Activity.UpdateProductActivity"></activity>
+        <activity android:name=".Activity.ListActivitys.ListClientActivity"></activity>
+        <activity android:name=".Activity.AddActivitys.AddClientActivity" />
+        <activity android:name=".Activity.UpdatesActivitys.UpdateProductActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".Activity.AddSaleActivity" />
-        <activity android:name=".Activity.AddProductActivity" />
+        <activity android:name=".Activity.AddActivitys.AddSaleActivity" />
+        <activity android:name=".Activity.AddActivitys.AddProductActivity" />
         <activity android:name=".Activity.LoginScreens.SingUpActivity" />
         <activity android:name=".Activity.LoginScreens.SingInActivity" />
         <activity android:name=".Activity.LoginScreens.firstScreenActivity">

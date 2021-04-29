@@ -1,4 +1,4 @@
-package com.example.estoque3.Activity;
+package com.example.estoque3.Activity.AddActivitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

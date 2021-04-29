@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/BackgroundColor"
     android:scrollbarStyle="outsideInset"
-    tools:context=".Activity.AddProductActivity">
+    tools:context=".Activity.AddActivitys.AddProductActivity">
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/ToggleGroup"

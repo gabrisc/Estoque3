@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Estoque3</string>
-    <string name="tab_text_1">Finanças</string>
+    <string name="tab_text_1">Estabelecimento</string>
     <string name="tab_text_2">Produtos</string>
     <string name="tab_text_3">Vendas</string>
     <!-- TODO: Remove or change this placeholder text -->

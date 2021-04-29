@@ -12,7 +12,7 @@
  import androidx.lifecycle.ViewModelProvider;
  import androidx.recyclerview.widget.LinearLayoutManager;
  import androidx.recyclerview.widget.RecyclerView;
- import com.example.estoque3.Activity.UpdateProductActivity;
+ import com.example.estoque3.Activity.UpdatesActivitys.UpdateProductActivity;
  import com.example.estoque3.R;
  import com.example.estoque3.entity.EconomicOperation;
  import com.example.estoque3.util.adapters.AdapterEconomicOperation;
