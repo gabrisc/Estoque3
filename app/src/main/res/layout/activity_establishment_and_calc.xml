@@ -4,39 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainScreens.MainActivity">
+    android:background="#00FFFFFF"
+    tools:context=".Activity.Establishment.ActivityEstablishmentAndCalc">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.Estoque3.AppBarOverlay">
+        android:background="#00FFFFFF"
+        android:theme="@style/Theme.Estoque3.NoActionBar.AppBarOverlay">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/DarkGreen" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
+        android:id="@+id/view_pager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-    </androidx.viewpager.widget.ViewPager>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="TODO"
-        android:onClick="Create"
-        app:backgroundTint="@color/PrimaryColor"
-        app:srcCompat="@drawable/ic_baseline_add_24"
-        tools:ignore="VectorDrawableCompat" />
-
+        android:background="#00FFFFFF"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,8 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_backgroud"
+    android:background="@color/DarkGreenVariant"
     tools:context=".Activity.AddActivitys.AddClientActivity">
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Novo Cliente"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/backgroud_format"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextClientName"
@@ -19,10 +43,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintTop_toTopOf="@+id/view10"
+        app:layout_constraintVertical_bias="0.048" />
 
     <EditText
         android:id="@+id/editTextEmailAddress"
@@ -76,7 +100,6 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button_delete"
         android:onClick="cancelRegistrer"
-        android:text="Cancelar"
         android:textColor="#90FB0000"
         android:textColorHighlight="#FF0000"
         android:textColorHint="#FFFFFF"
@@ -85,18 +108,5 @@
         app:layout_constraintEnd_toEndOf="@+id/button12"
         app:layout_constraintStart_toStartOf="@+id/button12"
         app:layout_constraintTop_toBottomOf="@+id/button12" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="callList"
-        app:layout_constraintBottom_toTopOf="@+id/editTextClientName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_format_list_bulleted_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

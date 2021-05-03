@@ -4,39 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BackgroundColor"
+    android:background="@color/DarkGreenVariant"
     android:scrollbarStyle="outsideInset"
     tools:context=".Activity.AddActivitys.AddProductActivity">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/ToggleGroup"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/PrimaryColorVariant"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNameProduct"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Novo Produto"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998"
-        app:singleSelection="true">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/ToggleButtonService"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Serviço" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/ToggleButtonProduct"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="produto" />
-
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+    <View
+        android:id="@+id/view9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/backgroud_format"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
@@ -75,7 +69,7 @@
         android:id="@+id/editTextNameProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rouded_button"
         android:ems="10"
         android:hint="Nome"
@@ -84,12 +78,9 @@
         android:textColor="@color/DarkGray"
         android:textColorHint="@color/DarkGray"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintTop_toTopOf="@+id/view9" />
 
     <EditText
         android:id="@+id/editTextBuyValue"
@@ -110,9 +101,9 @@
 
     <SeekBar
         android:id="@+id/seekBarQuantity"
-        android:layout_width="0dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:clickable="true"
         android:max="100"
         android:progress="1"
@@ -123,7 +114,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="0dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rouded_button"
@@ -132,15 +123,15 @@
         android:textColorHint="@color/DarkGray"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSellValue"
-        app:layout_constraintStart_toStartOf="@+id/editTextSellValue"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSellValue" />
+        app:layout_constraintEnd_toEndOf="@+id/spinner4"
+        app:layout_constraintStart_toStartOf="@+id/spinner4"
+        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button_delete"
         android:onClick="cancelRegistrer"
         android:text="Cancelar"
@@ -162,5 +153,15 @@
         app:layout_constraintEnd_toEndOf="@+id/seekBarQuantity"
         app:layout_constraintStart_toStartOf="@+id/seekBarQuantity"
         app:layout_constraintTop_toBottomOf="@+id/seekBarQuantity" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_button"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSellValue"
+        app:layout_constraintStart_toStartOf="@+id/editTextSellValue"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSellValue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

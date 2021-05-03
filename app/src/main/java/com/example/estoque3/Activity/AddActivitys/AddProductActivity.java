@@ -34,22 +34,6 @@ public class AddProductActivity extends AppCompatActivity {
         SeekBar quantity = findViewById(R.id.seekBarQuantity);
         counter = findViewById(R.id.counter);
         toggleGroup = findViewById(R.id.ToggleGroup);
-        MaterialButton toggleButtonService = findViewById(R.id.ToggleButtonService);
-        MaterialButton toggleButtonProduct = findViewById(R.id.ToggleButtonProduct);
-
-
-        toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
-        @Override
-        public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                if(toggleGroup.getCheckedButtonId()==toggleButtonService.getId()){
-                    type= String.valueOf(TypeOfProduct.SERVIÇO);
-                    quantity.setEnabled(false);
-                } if (toggleGroup.getCheckedButtonId()==toggleButtonProduct.getId()){
-                    type= String.valueOf(typeOfProduct.PRODUTO);
-                    quantity.setEnabled(true);
-                }
-             }
-        });
 
         quantity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChangedValue = 0;

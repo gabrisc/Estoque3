@@ -15,10 +15,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.estoque3.R;
 
-/**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
- * one of the sections/tabs/pages.
- */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes

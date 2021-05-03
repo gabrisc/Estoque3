@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Estoque3.NoActionBar">
-        <activity android:name=".Activity.ListActivitys.ListClientActivity"></activity>
+        <activity
+            android:name=".Activity.Establishment.ActivityEstablishmentAndCalc"
+            android:label="@string/title_activity_establishment_and_calc"
+            android:theme="@style/Theme.Estoque3.NoActionBar.NoActionBar"></activity>
+        <activity android:name=".Activity.ListActivitys.ListClientActivity" />
         <activity android:name=".Activity.AddActivitys.AddClientActivity" />
         <activity android:name=".Activity.UpdatesActivitys.UpdateProductActivity" />
         <activity android:name=".TestActivity" />

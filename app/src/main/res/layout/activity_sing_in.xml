@@ -8,18 +8,27 @@
     tools:context=".Activity.LoginScreens.SingInActivity">
 
 
+    <View
+        android:id="@+id/view6"
+        android:layout_width="414dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/backgroud_format"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="177dp"
+        android:contentDescription="logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002"
-        app:srcCompat="@drawable/technology_branco"
-        android:contentDescription="logo" />
+        app:layout_constraintVertical_bias="0.234"
+        app:srcCompat="@drawable/technology_branco" />
 
     <Button
         android:id="@+id/button"

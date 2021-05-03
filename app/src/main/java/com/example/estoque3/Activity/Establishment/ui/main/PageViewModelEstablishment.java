@@ -1,6 +1,4 @@
-package com.example.estoque3.ui.main;
-
-import android.content.Intent;
+package com.example.estoque3.Activity.Establishment.ui.main;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
@@ -8,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-public class PageViewModel extends ViewModel {
+public class PageViewModelEstablishment extends ViewModel {
 
     private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
     private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
@@ -25,5 +23,4 @@ public class PageViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
-
 }

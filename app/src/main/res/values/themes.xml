@@ -3,8 +3,8 @@
     <style name="Theme.Estoque3" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/DarkGreen</item>
-        <item name="colorPrimaryVariant">@color/DarkGreenVariant</item>
-        <item name="colorOnPrimary">@color/PrimaryColorVariant</item>
+        <item name="colorPrimaryVariant">@color/DarkGreen</item>
+        <item name="colorOnPrimary">@color/DarkGreen</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/DarkGreen</item>
         <item name="colorSecondaryVariant">@color/DarkGreenVariant</item>
@@ -20,6 +20,7 @@
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Theme.Estoque3.Toggle" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:background">@color/BackgroundColor</item>
     </style>
@@ -27,4 +28,13 @@
     <style name="Theme.Estoque3.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Estoque3.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Estoque3.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Estoque3.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Estoque3.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

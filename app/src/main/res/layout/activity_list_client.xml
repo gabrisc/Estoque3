@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/DarkGreenVariant"
     tools:context=".Activity.ListActivitys.ListClientActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewClient"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/backgroud_format"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
