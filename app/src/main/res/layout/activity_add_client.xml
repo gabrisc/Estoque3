@@ -4,76 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGreenVariant"
+    android:background="@drawable/gradient_backgroud"
     tools:context=".Activity.AddActivitys.AddClientActivity">
+
+    <TextView
+        android:id="@+id/textViewDateSingUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="TextView"
+        android:textColor="@color/TextColor"
+        android:textSize="16dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/editTextClientName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView47"
+        app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
     <TextView
         android:id="@+id/textView47"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-black"
         android:text="Novo Cliente"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view10"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/backgroud_format"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextClientName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rouded_button"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Nome"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view10"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintTop_toBottomOf="@+id/textView47"
+        app:layout_constraintVertical_bias="0.13" />
 
     <EditText
         android:id="@+id/editTextEmailAddress"
-        android:layout_width="0dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
         app:layout_constraintStart_toStartOf="@+id/editTextPhone"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="0dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Telefone"
         android:inputType="phone"
         android:paddingLeft="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/editTextClientName"
         app:layout_constraintStart_toStartOf="@+id/editTextClientName"
         app:layout_constraintTop_toBottomOf="@+id/editTextClientName" />
@@ -84,11 +102,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/rouded_button"
+        android:fontFamily="sans-serif-black"
         android:onClick="ValidFields"
         android:text="Cadastrar"
-        android:textColor="@color/DarkGray"
+        android:textColor="@color/TextColor"
+        android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:backgroundTint="@color/Buttomcolor"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/editTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
@@ -97,16 +118,26 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_button_delete"
-        android:onClick="cancelRegistrer"
-        android:textColor="#90FB0000"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rouded_button_delete"
+        android:fontFamily="sans-serif-black"
+        android:text="CANCELAR"
+        android:textColor="#FFFFFF"
         android:textColorHighlight="#FF0000"
         android:textColorHint="#FFFFFF"
         android:textStyle="bold"
-        app:backgroundTint="@color/DarkGreenVariant"
+        app:backgroundTint="#FF0051"
         app:layout_constraintEnd_toEndOf="@+id/button12"
         app:layout_constraintStart_toStartOf="@+id/button12"
         app:layout_constraintTop_toBottomOf="@+id/button12" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callList"
+        android:text="Button"
+        tools:layout_editor_absoluteX="318dp"
+        tools:layout_editor_absoluteY="683dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
