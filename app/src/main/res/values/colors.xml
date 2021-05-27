@@ -6,6 +6,24 @@
     <color name="PrimaryColorVariant">#88FD0A</color>
     <color name="PrimaryColorVariant2">#D7E012</color>
 
+
+    <color name="TextColor">#FFFFFF</color>
+    <color name="DeleteButtonColor">#FF0051</color>
+
+    <color name="DarkPurple">#1E0133</color>
+    <color name="IntermediateDMPurple">#664882</color>
+    <color name="MiddlePurple">#6D05A0</color>
+    <color name="intermediateMLPurple">#776E9C</color>
+    <color name="lightPurple">#BD91BD</color>
+
+    <color name="DarkBlue">#000B87</color>
+    <color name="IntermediateDMBlue">#0A4159</color>
+    <color name="MiddleBlue">#028F96</color>
+    <color name="intermediateMLBlue">#04B0BF</color>
+    <color name="lightBlue">#0FFFF8</color>
+    <color name="MorelightBlue">#84F6F3</color>
+    <color name="Buttomcolor">#10F580</color>
+
     <color name="DarkGray">#424242</color>
     <color name="LightGray">#4E4D4D</color>
     <color name="BackgroundColor">#cfcfcf</color>

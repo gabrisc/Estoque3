@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGreenVariant"
+    android:background="@drawable/gradient_backgroud"
     tools:context=".ui.main.EconomicOperationFragment">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="Produtos/Serviços"
         android:textColor="#FFFFFF"
@@ -27,7 +28,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="100dp"
-        android:background="@drawable/backgroud_format"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,130 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGreenVariant"
+    android:background="@drawable/gradient_backgroud"
     tools:context=".Activity.UpdatesActivitys.UpdateProductActivity">
 
     <TextView
         android:id="@+id/textView49"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-black"
-        android:text="Novo Produto"
+        android:text="Editar Produto"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/backgroud_format"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_button_delete"
-        android:onClick="cancelRegistrer"
-        android:text="Cancelar"
-        android:textColor="#90FB0000"
-        android:textColorHighlight="#FF0000"
-        android:textColorHint="#FFFFFF"
-        android:textStyle="bold"
-        app:backgroundTint="@color/DarkGreenVariant"
-        app:layout_constraintEnd_toEndOf="@+id/button16"
-        app:layout_constraintStart_toStartOf="@+id/button16"
-        app:layout_constraintTop_toBottomOf="@+id/button16" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rouded_button"
-        android:onClick="ValidFields"
-        android:text="Cadastrar Produto"
-        android:textColor="@color/DarkGray"
-        android:textColorHint="@color/DarkGray"
+        android:fontFamily="sans-serif-black"
+        android:onClick="validateFields"
+        android:text="Salvar"
+        android:textColor="@color/TextColor"
+        android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantity2"
-        app:layout_constraintStart_toStartOf="@+id/seekBarQuantity2"
-        app:layout_constraintTop_toBottomOf="@+id/counter2" />
+        app:backgroundTint="@color/Buttomcolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valueOfSeek" />
 
-    <EditText
-        android:id="@+id/editTextBuyValue2"
+    <Button
+        android:id="@+id/button17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rouded_button"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rouded_button_delete"
+        android:fontFamily="sans-serif-black"
+        android:onClick="deleteEconomicOperation"
+        android:text="Apagar"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FF0000"
+        android:textColorHint="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="#FF0051"
+        app:layout_constraintEnd_toEndOf="@+id/button16"
+        app:layout_constraintStart_toStartOf="@+id/button16"
+        app:layout_constraintTop_toBottomOf="@+id/button16" />
+
+    <EditText
+        android:id="@+id/editTextExpenseValueforEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Custo/Despesas"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"
-        android:textColor="@color/DarkGray"
-        android:textColorHint="@color/DarkGray"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNameProduct2"
-        app:layout_constraintStart_toStartOf="@+id/editTextNameProduct2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNameProduct2" />
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNameProductForEdit"
+        app:layout_constraintStart_toStartOf="@+id/editTextNameProductForEdit"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameProductForEdit" />
 
     <EditText
-        android:id="@+id/editTextSellValue2"
+        android:id="@+id/editTextSellValueForEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rouded_button"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Valor de venda"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"
-        android:textColor="@color/DarkGray"
-        android:textColorHint="@color/DarkGray"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextBuyValue2"
-        app:layout_constraintStart_toStartOf="@+id/editTextBuyValue2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextBuyValue2" />
-
-    <Spinner
-        android:id="@+id/spinner5"
-        android:layout_width="0dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rouded_button"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSellValue"
-        app:layout_constraintStart_toStartOf="@+id/editTextSellValue"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSellValue" />
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextExpenseValueforEdit"
+        app:layout_constraintStart_toStartOf="@+id/editTextExpenseValueforEdit"
+        app:layout_constraintTop_toBottomOf="@+id/editTextExpenseValueforEdit" />
 
     <TextView
         android:id="@+id/textView51"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rouded_button"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rouded_edit_text"
+        android:fontFamily="sans-serif-thin"
         android:gravity="center"
+
+        android:hapticFeedbackEnabled="false"
         android:text="Quantidade "
-        android:textColorHint="@color/DarkGray"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSellValue2"
-        app:layout_constraintStart_toStartOf="@+id/editTextSellValue2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSellValue2" />
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSellValueForEdit"
+        app:layout_constraintStart_toStartOf="@+id/editTextSellValueForEdit"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSellValueForEdit" />
 
     <SeekBar
-        android:id="@+id/seekBarQuantity2"
+        android:id="@+id/seekBarQuantityEdit"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:clickable="true"
         android:max="100"
         android:progress="1"
@@ -137,29 +130,44 @@
         app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
     <TextView
-        android:id="@+id/counter2"
+        android:id="@+id/valueOfSeek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantity2"
-        app:layout_constraintStart_toStartOf="@+id/seekBarQuantity2"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarQuantity2" />
+        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantityEdit"
+        app:layout_constraintStart_toStartOf="@+id/seekBarQuantityEdit"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarQuantityEdit" />
 
     <EditText
-        android:id="@+id/editTextNameProduct2"
+        android:id="@+id/editTextNameProductForEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Nome"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:textColor="@color/DarkGray"
-        android:textColorHint="@color/DarkGray"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="24sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView49"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNameProductForEdit"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNameProductForEdit"
+        app:layout_constraintStart_toEndOf="@+id/textView49"
+        app:layout_constraintTop_toBottomOf="@+id/textView49"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

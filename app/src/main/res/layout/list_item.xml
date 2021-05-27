@@ -7,41 +7,29 @@
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
-    android:background="@drawable/rounded_button_delete"
-    android:gravity="center"
-    android:paddingLeft="10dp"
-    android:paddingTop="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="10dp">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_delete_24"
-        tools:ignore="VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        tools:ignore="VectorDrawableCompat" />
+    android:background="@drawable/rounded_element_for_select">
 
     <TextView
 
-        android:id="@+id/nameItem"
+        android:id="@+id/TextViewValueOfEconomicOperation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_height="match_parent"
+
         android:layout_weight="1"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/up"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="Suspicious0dp" />
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    TextView
+    android:id="@+id/textView35"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="TextView"
+    android:textColor="#000000" />
 
 
 </LinearLayout>

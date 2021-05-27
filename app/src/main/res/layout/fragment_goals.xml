@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGreenVariant"
+    android:background="@drawable/gradient_backgroud"
     tools:context=".Activity.Establishment.GoalsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,11 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="10"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,10 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="sans-serif-condensed-light"
             android:gravity="center"
             android:text="CONCLUIDAS"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -54,7 +55,7 @@
         android:layout_weight="1"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Metas "
+        android:text="METAS"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textSize="30sp"
@@ -68,24 +69,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="45dp"
-        android:background="@drawable/backgroud_format"
+        android:background="#0010F580"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#90FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
@@ -97,6 +86,6 @@
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/view3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

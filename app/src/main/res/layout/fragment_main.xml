@@ -5,14 +5,13 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGreenVariant"
+    android:background="@drawable/gradient_backgroud"
     tools:context=".ui.main.PlaceholderFragment">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/backgroud_format"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Objetivo da empresa"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -36,7 +35,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="TextView"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="20sp" />
 
         <TextView
@@ -45,7 +44,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Meta de Realizações"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -56,7 +55,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="TextView"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="20sp" />
 
         <TextView
@@ -65,7 +64,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Ponto de equilibrio"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -76,7 +75,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="TextView"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="20sp" />
 
         <TextView
@@ -85,7 +84,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Expectativa de vendas"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -96,7 +95,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="TextView"
-            android:textColor="#000000"
+            android:textColor="@color/TextColor"
             android:textSize="20sp" />
 
     </LinearLayout>

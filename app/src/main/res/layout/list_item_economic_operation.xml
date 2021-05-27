@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp">
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:background="@drawable/rounded_element_for_list"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/TextViewValueOfEconomicOperation"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+
+            android:gravity="center"
+            android:textColor="@color/TextColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="@+id/view5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/view5" />
+
+        <TextView
+            android:id="@+id/textViewSealValueEconomicOperation"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/TextColor"
+            app:layout_constraintBottom_toTopOf="@+id/textViewQuantityEconomicOperation"
+            app:layout_constraintEnd_toEndOf="@+id/view5"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/TextViewValueOfEconomicOperation" />
+
+        <TextView
+            android:id="@+id/textViewQuantityEconomicOperation"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:gravity="center"
+            android:textColor="@color/TextColor"
+            app:layout_constraintBottom_toBottomOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="@+id/view5"
+            app:layout_constraintStart_toStartOf="@+id/view5" />
+
+    </LinearLayout>
+
+</FrameLayout>

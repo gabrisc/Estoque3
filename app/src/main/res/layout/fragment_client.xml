@@ -5,16 +5,16 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGreenVariant"
-    tools:context=".ui.main.FinanceFragment">
+    android:background="@drawable/gradient_backgroud"
+    tools:context=".ui.main.ClientFragment">
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Finanças"
+        android:text="CLIENTES"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -23,11 +23,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView4"
+        android:id="@+id/recyclerViewClients"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="100dp"
-        android:background="@drawable/backgroud_format"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -34,11 +34,11 @@
 
         <TextView
 
-            android:id="@+id/nameItem"
+            android:id="@+id/TextViewValueOfEconomicOperation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            
             android:layout_weight="1"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -48,14 +48,14 @@
             tools:ignore="Suspicious0dp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_baseline_edit_24"
             tools:ignore="VectorDrawableCompat" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

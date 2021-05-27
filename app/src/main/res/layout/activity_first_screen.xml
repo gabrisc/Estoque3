@@ -9,71 +9,69 @@
     style="@style/Theme.Estoque3.NoActionBar">
 
 
-    <View
-        android:id="@+id/view7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/backgroud_format"
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rouded_button"
+        android:fontFamily="sans-serif-black"
+        android:onClick="bt_singIn"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/Buttomcolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rouded_button"
+        android:fontFamily="sans-serif-black"
+        android:onClick="bt_singUp"
+        android:text="Cadastrar-se"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/Buttomcolor"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageDelete"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="ESTOQUE  43"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageDelete"
         android:layout_width="wrap_content"
         android:layout_height="177dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236"
+        app:layout_constraintTop_toBottomOf="@+id/textView55"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/technology_branco" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ESTOQUE"
-        android:textColor="@color/DarkGreen"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-
-    <Button
-        android:id="@+id/button8"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button"
-        android:onClick="bt_singUp"
-        android:text="Cadastrar-se"
-        android:textColor="@color/DarkGray"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rouded_button"
-        android:onClick="bt_singIn"
-        android:text="Login"
-        android:textColor="@color/DarkGray"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/button8"
-        app:layout_constraintStart_toStartOf="@+id/button8"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

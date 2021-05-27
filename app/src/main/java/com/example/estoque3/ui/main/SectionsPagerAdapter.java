@@ -1,5 +1,6 @@
 package com.example.estoque3.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
@@ -21,7 +22,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private static final int[] TAB_TITLES = new int[]{R.drawable.ic_baseline_leaderboard_24,
             R.drawable.ic_baseline_store_24,
             R.drawable.ic_baseline_add_shopping_cart_24,
-            R.drawable.ic_baseline_attach_money_24};
+            R.drawable.ic_baseline_people_alt_24};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -39,13 +40,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         }else if (position==2){
             fragment = SalesFragment.newInstance(3);
         }else if (position==3){
-            fragment = FinanceFragment.newInstance(4);
+            fragment = ClientFragment.newInstance(4);
         }
         return  fragment;
     }
 
     Drawable drawable;
-
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

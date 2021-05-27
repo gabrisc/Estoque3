@@ -2,17 +2,22 @@
     <!-- Base application theme. -->
     <style name="Theme.Estoque3" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/DarkGreen</item>
-        <item name="colorPrimaryVariant">@color/DarkGreen</item>
-        <item name="colorOnPrimary">@color/DarkGreen</item>
+        <item name="colorPrimary">@color/IntermediateDMBlue</item>
+        <item name="colorPrimaryVariant">@color/IntermediateDMBlue</item>
+        <item name="colorOnPrimary">@color/IntermediateDMBlue</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/DarkGreen</item>
-        <item name="colorSecondaryVariant">@color/DarkGreenVariant</item>
-        <item name="colorOnSecondary">@color/DarkGray</item>
+        <item name="colorSecondary">@color/IntermediateDMBlue</item>
+        <item name="colorSecondaryVariant">@color/IntermediateDMBlue</item>
+        <item name="colorOnSecondary">@color/TextColor</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/TextColor</item>
+    </style>
 
+    <style name="Theme.Estoque3.Spinner" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:textColorHint">@color/TextColor</item>
 
     </style>
 
