@@ -52,10 +52,16 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
         buttonVisibilityEnable(false);
         floatingVisibilityEnable(true);
         textViewOrder= findViewById(R.id.textViewOrder);
-        totalValueTextView= findViewById(R.id.totalValueTextView);
         totalValue = 0.0;
         findAllClients();
         reloadRecyclerClient();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.finish();
+        economicOperationForSaleVoArrayList.clear();
     }
 
     @Override
@@ -130,13 +136,15 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
     }
 
     private void addEconomicOperation(EconomicOperationForSaleVo economicOperationForSaleVo){
-        economicOperationForSaleVoArrayList.add(economicOperationForSaleVo);
-        double total= 0.0;
-        for(EconomicOperationForSaleVo e:economicOperationForSaleVoArrayList) {
-            total = e.getEconomicOperation().getQuantity()*e.getEconomicOperation().getSealValue();
+        if (economicOperationForSaleVoArrayList.isEmpty()){
+            economicOperationForSaleVoArrayList.add(economicOperationForSaleVo);
+        }else{
+            for (EconomicOperationForSaleVo e:economicOperationForSaleVoArrayList){
+                if(e.getEconomicOperation().getId().equals(economicOperationForSaleVo.getEconomicOperation().getId())){
+                    e.setQuantitySelect(e.getQuantitySelect()+economicOperationForSaleVo.getQuantitySelect());
+                }
+            }
         }
-        totalValue+=total;
-        totalValueTextView.setText(totalValue.toString());
     }
 
     public void closingSale(View view){
@@ -218,17 +226,13 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
     }
 
     private void buttonVisibilityEnable(Boolean enable){
-        FloatingActionButton buttonToConclusion,buttonCancelSeal;
-
+        FloatingActionButton buttonToConclusion;
         buttonToConclusion = findViewById(R.id.floatingActionButtonCloseSeal);
-        buttonCancelSeal = findViewById(R.id.floatingActionButtonCancel);
 
         if (enable.equals(Boolean.TRUE)){
             buttonToConclusion.setVisibility(View.VISIBLE);
-            buttonCancelSeal.setVisibility(View.VISIBLE);
         }else{
             buttonToConclusion.setVisibility(View.INVISIBLE);
-            buttonCancelSeal.setVisibility(View.INVISIBLE);
         }
     }
 

@@ -56,6 +56,14 @@ public class ClosingSaleActivity extends AppCompatActivity implements AdapterEco
 
         setDateInActivity();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.finish();
+        economicOperationForSaleVoArrayList.clear();
+    }
+
     private void setListProductSelect(){
         for (EconomicOperationForSaleVo economicOperationForSaleVo:economicOperationForSaleVoArrayList){
             listProductSelect.add(economicOperationForSaleVo.getEconomicOperation());

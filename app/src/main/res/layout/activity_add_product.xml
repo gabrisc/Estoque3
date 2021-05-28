@@ -66,6 +66,27 @@
         />
 
     <EditText
+        android:id="@+id/editTextSellValue2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rouded_edit_text"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
+        android:hint="UNIDADE DE MEDIDA"
+        android:inputType="numberDecimal"
+        android:paddingLeft="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextBuyValue"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextBuyValue"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <EditText
         android:id="@+id/editTextNameProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

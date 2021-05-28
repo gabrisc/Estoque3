@@ -37,9 +37,9 @@ public class AdapterEconomicOperation extends RecyclerView.Adapter<AdapterEconom
     @Override
     public void onBindViewHolder(@NonNull AdapterEconomicOperation.MyViewHolder holder, int position) {
         EconomicOperation economicOperation = economicOperationList.get(position);
-        holder.name.setText(economicOperation.getName());
-        holder.quantity.setText(String.valueOf(economicOperation.getQuantity()));
-        holder.sealValue.setText(String.valueOf(economicOperation.getSealValue()));
+        holder.name.setText(economicOperation.getName().toUpperCase());
+        holder.quantity.setText("Und: " +String.valueOf(economicOperation.getQuantity()));
+        holder.sealValue.setText("R$: "+String.valueOf(economicOperation.getSealValue()));
     }
 
     @Override
