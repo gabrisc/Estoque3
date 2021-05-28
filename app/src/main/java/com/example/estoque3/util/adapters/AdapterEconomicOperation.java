@@ -30,14 +30,16 @@ public class AdapterEconomicOperation extends RecyclerView.Adapter<AdapterEconom
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View ListItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
+        View ListItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_economic_operation,parent,false);
         return new MyViewHolder(ListItem,monProductListerner);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterEconomicOperation.MyViewHolder holder, int position) {
         EconomicOperation economicOperation = economicOperationList.get(position);
-        holder.nome.setText(economicOperation.getName());
+        holder.name.setText(economicOperation.getName());
+        holder.quantity.setText(String.valueOf(economicOperation.getQuantity()));
+        holder.sealValue.setText(String.valueOf(economicOperation.getSealValue()));
     }
 
     @Override
@@ -47,12 +49,16 @@ public class AdapterEconomicOperation extends RecyclerView.Adapter<AdapterEconom
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView nome;
+        TextView name;
+        TextView sealValue;
+        TextView quantity;
         OnEconomicOperationListerner onEconomicOperationListerner;
 
         public MyViewHolder(final View itemView, OnEconomicOperationListerner onEconomicOperationListerner) {
             super(itemView);
-            nome = itemView.findViewById(R.id.nameItem);
+            name = itemView.findViewById(R.id.TextViewValueOfEconomicOperation);
+            sealValue= itemView.findViewById(R.id.textViewSealValueEconomicOperation);
+            quantity = itemView.findViewById(R.id.textViewQuantityEconomicOperation);
             this.onEconomicOperationListerner =onEconomicOperationListerner;
             itemView.setOnClickListener(this);
         }
@@ -65,4 +71,5 @@ public class AdapterEconomicOperation extends RecyclerView.Adapter<AdapterEconom
     public interface OnEconomicOperationListerner {
         void onEconomicOperationClick(int position);
     }
+
 }

@@ -12,52 +12,67 @@ import java.util.List;
 
 public class Sale {
     private List<EconomicOperation> economicOperationList;
-    private String id,clientName,date,paymentType;
+    private String id,date,paymentType;
+    private Client client;
     private Double totalValue,discount;
 
-    public void subtrairVendas(){
-//
-//        Iterator<Produtovendido> iterator=ListagemDeProdutosParaCompras.produtosSelecionados.iterator();
-//        while(iterator.hasNext()){
-//            Produtovendido produtovendido = iterator.next();
-//
-//            Produto produto=new Produto();
-//            produto.setNomeProduto(produtovendido.getNomeProduto());
-//            produto.setIdProduto(produtovendido.getIdProduto());
-//            produto.setQuantidadeUnidade(produtovendido.getQuantidadeUnidade()-produtovendido.getQuantidadeVendida());
-//            produto.setPrecoVendaUnidade(produtovendido.getPrecoVendaUnidade());
-//            produto.setDataeHora(produtovendido.getDataeHora());
-//            produto.setPrecoCompraUnidade(produtovendido.getPrecoCompraUnidade());
-//
-//            DatabaseReference fireBaseRef=ConfigFireBaseReference.getFirebaseDatabase();
-//            FirebaseAuth autenticacion = configFireBase.getFireBaseAutenticacao();
-//            String idUsuario = Base64Custom.codificarBase64(autenticacion.getCurrentUser().getEmail());
-//
-//            fireBaseRef.child("armazenamento").child(idUsuario).child("produtos").child(produto.getIdProduto()).setValue(produto).addOnCompleteListener(new OnCompleteListener<Void>() {
-//
-//                @Override
-//                public void onComplete(@NonNull Task<Void> task) {
-//
-//
-//                }
-//            });
-//
-//        }
-//        ListagemDeProdutosParaCompras.produtosSelecionados.clear();
+
+
+
+
+    public List<EconomicOperation> getEconomicOperationList() {
+        return economicOperationList;
     }
 
-    public void removerVenda(){
-
-//        DatabaseReference firebaseRef2= ConfigFireBaseReference.getFirebaseDatabase();
-//        DatabaseReference produtoRef=firebaseRef2.child("armazenamento").child(getIdUsuario()).child("vendas").child(this.getIdVenda());
-//        produtoRef.removeValue();
+    public void setEconomicOperationList(List<EconomicOperation> economicOperationList) {
+        this.economicOperationList = economicOperationList;
     }
 
-    public String getClientName() {
-        return clientName;
+    public String getId() {
+        return id;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 }

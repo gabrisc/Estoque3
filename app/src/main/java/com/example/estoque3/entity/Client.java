@@ -15,16 +15,42 @@ public class Client {
     private String nome;
     private String email;
     private String telefone;
+    private String date;
 
 
-    public Client(String id, String nome, String email, String telefone) {
+    public Client(String id, String nome, String email, String telefone,String date) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
+        this.date=date;
     }
 
     public Client() {
+    }
+
+    public String delete(){
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("Clients")
+                .child(String.valueOf(this.getId()))
+                .removeValue();
+        return "Cliente Removido";
+    }
+
+    public String save() {
+        firebaseInstance.getReference()
+                .child(getIdUser())
+                .child("Clients")
+                .child(String.valueOf(this.getId()))
+                .setValue(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        mensage = "Cadastrado com sucesso";
+                    }
+                });
+        return mensage;
     }
 
     public String getId() {
@@ -59,22 +85,15 @@ public class Client {
         this.telefone = telefone;
     }
 
-    public String save() {
-        firebaseInstance.getReference()
-                .child(getIdUser())
-                .child("Clients")
-                .child(String.valueOf(this.getId()))
-                .setValue(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        mensage = "Cadastrado com sucesso";
-                    }
-                });
-        return mensage;
-    }
-
     public static String getIdUser() {
         return Base64Custom.Code64(firebaseAuth.getCurrentUser().getEmail());
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

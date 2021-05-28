@@ -32,12 +32,6 @@ import java.util.List;
 import static com.example.estoque3.entity.EconomicOperation.getIdUser;
 import static com.example.estoque3.util.FireBaseConfig.firebaseInstance;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SalesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SalesFragment extends Fragment implements AdapterSales.OnSaleListerner{
 
     private PageViewModel pageViewModel;

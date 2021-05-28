@@ -1,5 +1,8 @@
 package com.example.estoque3.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
 import com.example.estoque3.util.Base64Custom;
@@ -11,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.example.estoque3.util.FireBaseConfig.firebaseAuth;
@@ -25,15 +29,16 @@ public class EconomicOperation {
      private String type;
      private String mensage;
      private int quantity;
-     //Lucro
+     private String date;
      private double contributionValue;
 
-     public EconomicOperation(String name, double sealValue, double expenseValue, String type, int quantity, double contributionValue) {
+     public EconomicOperation(String name, double sealValue, double expenseValue, String type, int quantity, String date, double contributionValue) {
           Name = name;
           SealValue = sealValue;
           ExpenseValue = expenseValue;
           this.type = type;
           this.quantity = quantity;
+          this.date = date;
           this.contributionValue = contributionValue;
      }
 
@@ -55,12 +60,12 @@ public class EconomicOperation {
           return mensage;
      }
 
-     public String remove(){
+     public String delete(){
           firebaseInstance.getReference()
                   .child(getIdUser())
-                  .child("ProductsAndServices")
-                  .child("PRODUCTS")
-                  .child(String.valueOf(this.getId())).removeValue();
+                  .child("EconomicOperations")
+                  .child(String.valueOf(this.getId()))
+                  .removeValue();
           return "Produto Removido";
      }
 
@@ -111,6 +116,14 @@ public class EconomicOperation {
           return id;
      }
 
+     public String getDate() {
+          return date;
+     }
+
+     public void setDate(String date) {
+          this.date = date;
+     }
+
      public void setId(String id) {
           this.id = id;
      }
@@ -143,6 +156,10 @@ public class EconomicOperation {
           return type;
      }
 
+     public void setType(String type) {
+          this.type = type;
+     }
+
      public void setTypeWithProduct() {
           this.type = String.valueOf(TypeOfProduct.PRODUTO);
      }
@@ -165,4 +182,5 @@ public class EconomicOperation {
      public void setContributionValue(double contributionValue) {
           this.contributionValue = contributionValue;
      }
+
 }

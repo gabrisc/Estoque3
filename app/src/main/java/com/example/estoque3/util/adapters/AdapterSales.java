@@ -35,7 +35,7 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull AdapterSales.MyViewHolder holder, int position) {
         Sale sale = saleList.get(position);
-        holder.name.setText(sale.getClientName());
+        holder.name.setText(sale.getClient().getNome());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class AdapterSales extends RecyclerView.Adapter<AdapterSales.MyViewHolder
         OnSaleListerner onSaleListerner;
         public MyViewHolder(@NonNull View itemView,OnSaleListerner onSaleListerner) {
             super(itemView);
-            name = itemView.findViewById(R.id.nameItem);
+            name = itemView.findViewById(R.id.TextViewValueOfEconomicOperation);
             this.onSaleListerner = onSaleListerner;
             itemView.setOnClickListener(this);
         }

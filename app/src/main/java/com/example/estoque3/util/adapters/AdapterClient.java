@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,7 @@ import com.example.estoque3.entity.Client;
 
 import java.util.List;
 
-public class AdapterClient extends RecyclerView.Adapter<AdapterClient.MyViewHolder> {
+public class AdapterClient extends RecyclerView.Adapter<AdapterClient.MyViewHolder>{
     private List<Client> clientList;
     private Context context;
     private OnClientListener monClientListener;
@@ -49,7 +50,7 @@ public class AdapterClient extends RecyclerView.Adapter<AdapterClient.MyViewHold
 
         public MyViewHolder(@NonNull View itemView, OnClientListener onClientListener) {
             super(itemView);
-            nome = itemView.findViewById(R.id.nameItem);
+            nome = itemView.findViewById(R.id.TextViewValueOfEconomicOperation);
             this.onClientListener =onClientListener;
             itemView.setOnClickListener(this);
         }

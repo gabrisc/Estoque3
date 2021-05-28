@@ -6,6 +6,9 @@
  import android.view.LayoutInflater;
  import android.view.View;
  import android.view.ViewGroup;
+ import android.widget.ImageButton;
+ import android.widget.Toast;
+
  import androidx.annotation.NonNull;
  import androidx.appcompat.app.AlertDialog;
  import androidx.fragment.app.Fragment;
@@ -18,7 +21,10 @@
  import com.example.estoque3.util.adapters.AdapterEconomicOperation;
  import com.google.firebase.database.DataSnapshot;
  import com.google.firebase.database.DatabaseError;
+ import com.google.firebase.database.DatabaseReference;
  import com.google.firebase.database.ValueEventListener;
+
+ import java.io.Serializable;
  import java.util.ArrayList;
  import java.util.List;
  import static com.example.estoque3.entity.EconomicOperation.getIdUser;
@@ -31,9 +37,9 @@ public class EconomicOperationFragment extends Fragment implements AdapterEconom
     private static final String ARG_SECTION_NUMBER = "2";
     private AdapterEconomicOperation adapterEconomicOperation;
     private List<EconomicOperation> economicOperationList = new ArrayList<>();
-    private EconomicOperation economicOperationSelect;
     private Intent intent;
     private RecyclerView recyclerView;
+    private int positionEconomicOperationSelect;
 
     public EconomicOperationFragment() {}
 
@@ -64,7 +70,7 @@ public class EconomicOperationFragment extends Fragment implements AdapterEconom
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        adapterEconomicOperation = new AdapterEconomicOperation(economicOperationList,view.getContext(), this::onEconomicOperationClick);
+        adapterEconomicOperation = new AdapterEconomicOperation(economicOperationList,view.getContext(), this);
 
                 firebaseInstance.getReference()
                         .child(getIdUser())
@@ -86,39 +92,25 @@ public class EconomicOperationFragment extends Fragment implements AdapterEconom
                     }
                 });
                 recyclerView.setAdapter(adapterEconomicOperation);
-                //recyclerView.setAdapter(adapterEconomicOperation);
-
         return view;
     }
 
+
     @Override
     public void onEconomicOperationClick(int position) {
-        economicOperationSelect = economicOperationList.get(position);
-        intent = new Intent(getContext().getApplicationContext(), UpdateProductActivity.class);
-        intent.putExtra("id", economicOperationSelect.getId());
-        intent.putExtra("nome", economicOperationSelect.getName());
-        intent.putExtra("precovenda",String.valueOf(economicOperationSelect.getSealValue()));
-        intent.putExtra("precocompra",String.valueOf(economicOperationSelect.getExpenseValue()));
-        intent.putExtra("quantidade",String.valueOf(economicOperationSelect.getQuantity()));
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext().getApplicationContext());
-        builder.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(intent);
-            }
-        }).setNegativeButton("Apagar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                economicOperationSelect.remove();
-            }
-        }).setMessage("Nome: "+ economicOperationSelect.getName()+"\n"+
-                "Quantidade estocada: "+ economicOperationSelect.getQuantity()+"\n"+
-                "Preço de compra: "+ economicOperationSelect.getExpenseValue()+" R$"+"\n"+
-                "Valor de Venda: "+ economicOperationSelect.getSealValue()+" R$"+"\n");
-
-        builder.create();
-        builder.show();
+        EconomicOperation operation = economicOperationList.get(position);
+        positionEconomicOperationSelect =position;
+        intent= new Intent(getContext().getApplicationContext(), UpdateProductActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("id",operation.getId());
+        bundle.putString("type",operation.getType());
+        bundle.putDouble("ContributionValue",operation.getContributionValue());
+        bundle.putDouble("ExpenseValue",operation.getExpenseValue());
+        bundle.putString("Date",operation.getDate());
+        bundle.putString("Name",operation.getName());
+        bundle.putInt("Quantity",operation.getQuantity());
+        bundle.putDouble("SealValue",operation.getSealValue());
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
