@@ -12,13 +12,10 @@ import java.util.List;
 
 public class Sale {
     private List<EconomicOperation> economicOperationList;
+    private List<EconomicOperationForSaleVo> economicOperationForSaleVos;
     private String id,date,paymentType;
     private Client client;
     private Double totalValue,discount;
-
-
-
-
 
     public List<EconomicOperation> getEconomicOperationList() {
         return economicOperationList;
@@ -74,5 +71,13 @@ public class Sale {
 
     public void setDiscount(Double discount) {
         this.discount = discount;
+    }
+
+    public List<EconomicOperationForSaleVo> getEconomicOperationForSaleVos() {
+        return economicOperationForSaleVos;
+    }
+
+    public void setEconomicOperationForSaleVos(List<EconomicOperationForSaleVo> economicOperationForSaleVos) {
+        this.economicOperationForSaleVos = economicOperationForSaleVos;
     }
 }

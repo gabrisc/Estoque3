@@ -31,8 +31,18 @@ public class EconomicOperation {
      private int quantity;
      private String date;
      private double contributionValue;
+     private String typeQuantity;
 
-     public EconomicOperation(String name, double sealValue, double expenseValue, String type, int quantity, String date, double contributionValue) {
+     public EconomicOperation(String name, double sealValue, double expenseValue, String type, String date, double contributionValue) {
+          this.Name = name;
+          this.SealValue = sealValue;
+          this.ExpenseValue = expenseValue;
+          this.type = type;
+          this.date = date;
+          this.contributionValue = contributionValue;
+     }
+
+     public EconomicOperation(String name, double sealValue, double expenseValue, String type, int quantity, String date, double contributionValue, String typeQuantity) {
           Name = name;
           SealValue = sealValue;
           ExpenseValue = expenseValue;
@@ -40,10 +50,10 @@ public class EconomicOperation {
           this.quantity = quantity;
           this.date = date;
           this.contributionValue = contributionValue;
+          this.typeQuantity = typeQuantity;
      }
 
-     public EconomicOperation() {
-     }
+     public EconomicOperation(){}
 
      public String save(){
           firebaseInstance.getReference()
@@ -179,8 +189,9 @@ public class EconomicOperation {
           return contributionValue;
      }
 
-     public void setContributionValue(double contributionValue) {
-          this.contributionValue = contributionValue;
-     }
+     public void setContributionValue(double contributionValue) { this.contributionValue = contributionValue; }
 
+     public String getTypeQuantity() { return typeQuantity; }
+
+     public void setTypeQuantity(String typeQuantity) { this.typeQuantity = typeQuantity; }
 }

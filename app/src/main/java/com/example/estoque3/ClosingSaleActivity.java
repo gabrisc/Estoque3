@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,98 +23,160 @@ import com.example.estoque3.Activity.AddActivitys.AddSaleActivity;
 import com.example.estoque3.entity.EconomicOperation;
 import com.example.estoque3.entity.EconomicOperationForSaleVo;
 import com.example.estoque3.entity.Sale;
-import com.example.estoque3.util.adapters.AdapterEconomicOperationForSales;
+import com.example.estoque3.util.adapters.AdapterEconomicOperationForSaleVo;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+import static com.example.estoque3.Activity.AddActivitys.AddSaleActivity.clientSelected;
 import static com.example.estoque3.Activity.AddActivitys.AddSaleActivity.economicOperationForSaleVoArrayList;
+import static com.example.estoque3.util.FireBaseConfig.firebaseDbReference;
 
-public class ClosingSaleActivity extends AppCompatActivity implements AdapterEconomicOperationForSales.OnEconomicOperationForSaleListener{
-
+public class ClosingSaleActivity extends AppCompatActivity implements AdapterEconomicOperationForSaleVo.OnEconomicOperationForSaleVo{
     private Spinner spinnerPaymentstype;
     private RecyclerView recyclerView;
-    private List<EconomicOperation> listProductSelect = new ArrayList<>();
-    private List<Integer> quantitySelectArrayList = new ArrayList<>();
     private AlertDialog alertDialog;
+    private TextView date;
+    private SimpleDateFormat simpleDateFormat;
+    private Double total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closing_sale);
         setClientNameInActivity();
-        setListProductSelect();
         CalcTotalValue();
         recyclerView = findViewById(R.id.RecyclerViewEconomicOperationSelected);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        AdapterEconomicOperationForSales adapterEconomicOperationForSales = new AdapterEconomicOperationForSales(listProductSelect,getApplicationContext(),this::onEconomicOperationForSaleClick);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterEconomicOperationForSales);
+        setListPaymentsTypes();
+        setDateInActivity();
+        recarregarLista();
+    }
 
+    public void recarregarLista(){
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        AdapterEconomicOperationForSaleVo adapterEconomicOperationForSaleVo = new AdapterEconomicOperationForSaleVo(economicOperationForSaleVoArrayList,getApplicationContext(), this::onEconomicOperationForSaleVoClick);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapterEconomicOperationForSaleVo);
+    }
+
+    private void setListPaymentsTypes(){
         String[] listOfPaymentsType = {"DEBITO","CREDITO","DINHEIRO","CHEQUE","BOLETO","TRANSF. BANCARIA","OUTROS"};
         spinnerPaymentstype = findViewById(R.id.listOfPaymentsType);
-        spinnerPaymentstype.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.item_list_spinner, listOfPaymentsType)
-        );
-
-        setDateInActivity();
+        spinnerPaymentstype.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.item_list_spinner, listOfPaymentsType));
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         this.finish();
-        economicOperationForSaleVoArrayList.clear();
-    }
-
-    private void setListProductSelect(){
-        for (EconomicOperationForSaleVo economicOperationForSaleVo:economicOperationForSaleVoArrayList){
-            listProductSelect.add(economicOperationForSaleVo.getEconomicOperation());
-            quantitySelectArrayList.add(economicOperationForSaleVo.getQuantitySelect());
-        }
-
     }
 
     private void setDateInActivity() {
-        TextView date = findViewById(R.id.TextViewDateOfBuy2);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        date = findViewById(R.id.TextViewDateOfBuy2);
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         date.setText(simpleDateFormat.format(System.currentTimeMillis()));
     }
-    private void setClientNameInActivity() {
-        TextView clientName = findViewById(R.id.textViewClientName);
-        clientName.setText(economicOperationForSaleVoArrayList.get(0).getClient().getNome());
+
+    public void SaveSeal(View view) {
+        Sale sale= new Sale();
+        sale.setPaymentType(spinnerPaymentstype.getSelectedItem().toString());
+        sale.setClient(clientSelected);
+        sale.setDate(simpleDateFormat.format(System.currentTimeMillis()));
+        sale.setId(firebaseDbReference.push().getKey());
+        List<EconomicOperationForSaleVo> economicOperationForSaleVos= new ArrayList<>();
+        for(int e=0; e ==economicOperationForSaleVoArrayList.size();e++){
+            economicOperationForSaleVos = Collections.singletonList(economicOperationForSaleVoArrayList.iterator().next());
+        }
+        sale.setEconomicOperationForSaleVos(economicOperationForSaleVos);
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Aplicar desconto?");
+
+        alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                applyDiscount();
+            }
+        });
+
+        alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            closeSeal();
+            }
+        });
+        alertDialog.create();
+        alertDialog.show();
     }
 
-    private void CalcTotalValue() {
-        Double total= 0.0;
-        int i=0;
-        for(EconomicOperation e:listProductSelect){
-            for(Integer quantity:quantitySelectArrayList){
-                total+=quantity*e.getSealValue();
+    private void closeSeal(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Concluir Venda");
+        alertDialog.setMessage("Total: R$ ");
+        alertDialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
             }
-        }
-        TextView finalText = findViewById(R.id.textViewFinalValue);
-        finalText.setText("R$: "+total);
+        });
+
+        alertDialog.setNegativeButton("não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alertDialog.create();
+        alertDialog.show();
+    }
+
+    private void applyDiscount(){
+        View mDialogView = LayoutInflater.from(this).inflate(R.layout.dialog_discount,null);
+        Button butttonCancel =  mDialogView.findViewById(R.id.buttonDeleteDiscount);
+        Button buttonAddDiscount = mDialogView.findViewById(R.id.buttonAddDiscount);
+        EditText editText = mDialogView.findViewById(R.id.editTextDiscount);
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(mDialogView).setTitle("DESCONTO");
+        alertDialog=builder.create();
+
+        butttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        buttonAddDiscount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeSeal();
+                alertDialog.dismiss();
+                Toast.makeText(ClosingSaleActivity.this, "Selecione uma quantidade", Toast.LENGTH_SHORT).show();
+            }
+        });
+        alertDialog.show();
     }
 
     @Override
-    public void onEconomicOperationForSaleClick(int position){
-        EconomicOperation economicOperationSelect = listProductSelect.get(position);
-
+    public void onEconomicOperationForSaleVoClick(int position) {
+        EconomicOperationForSaleVo economicOperationForSaleVo = economicOperationForSaleVoArrayList.iterator().next();
         View mDialogView = LayoutInflater.from(this).inflate(R.layout.dialog_delete,null);
-        Button buttonDeleteEconomicOperation =  mDialogView.findViewById(R.id.buttonDeleteEconomicOperation);
-        Button buttonAddQuantity = mDialogView.findViewById(R.id.buttonAddQuantity);
-        SeekBar seekBar = mDialogView.findViewById(R.id.seekBarQuantityForSale);
+
+        Button buttonDeleteEconomicOperation=mDialogView.findViewById(R.id.buttonDeleteDiscount);
+        Button buttonAddQuantity=mDialogView.findViewById(R.id.buttonAddDiscount);
+        SeekBar seekBar=mDialogView.findViewById(R.id.seekBarQuantityForSale);
         TextView counter = mDialogView.findViewById(R.id.textViewCounter);
         TextView economicOperationselectName = mDialogView.findViewById(R.id.textViewNameProduct);
-        seekBar.setProgress(Integer.parseInt(quantitySelectArrayList.get(position).toString()));
 
-        economicOperationselectName.setText(economicOperationSelect.getName());
-        seekBar.setMax(economicOperationSelect.getQuantity());
-
-        counter.setText(quantitySelectArrayList.get(position).toString());
-        seekBar.setProgress(Integer.parseInt(quantitySelectArrayList.get(position).toString()));
-
+        seekBar.setProgress(Integer.parseInt(String.valueOf(economicOperationForSaleVo.getQuantitySelect())));
+        economicOperationselectName.setText(economicOperationForSaleVo.getEconomicOperation().getName());
+        seekBar.setMax(economicOperationForSaleVo.getEconomicOperation().getQuantity());
+        counter.setText(String.valueOf(economicOperationForSaleVo.getQuantitySelect()));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -125,41 +190,45 @@ public class ClosingSaleActivity extends AppCompatActivity implements AdapterEco
         AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(mDialogView).setTitle("Quantidade");
         alertDialog=builder.create();
 
-        buttonAddQuantity.setOnClickListener(new View.OnClickListener() {
+        buttonDeleteEconomicOperation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Integer.parseInt(counter.getText().toString())!=0){
-                    quantitySelectArrayList.add(position,Integer.valueOf(counter.getText().toString()));
+                    economicOperationForSaleVo.setQuantitySelect(Integer.valueOf(counter.getText().toString()));
+                    recarregarLista();
                     alertDialog.dismiss();
                 }else{
                     Toast.makeText(ClosingSaleActivity.this, "Selecione uma quantidade", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-        buttonDeleteEconomicOperation.setOnClickListener(new View.OnClickListener() {
+        buttonAddQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            listProductSelect.remove(position);
-            if (listProductSelect.isEmpty()){
-                startActivity(new Intent(getApplicationContext(), AddSaleActivity.class));
-                try {
-                    this.finalize();
-                } catch (Throwable throwable) { throwable.printStackTrace(); }
-            }
+                economicOperationForSaleVoArrayList.remove(position);
+                if (economicOperationForSaleVoArrayList.isEmpty()){
+                    startActivity(new Intent(getApplicationContext(), AddSaleActivity.class));
+                    try {
+                        this.finalize();
+                    } catch (Throwable throwable) { throwable.printStackTrace(); }
+                }
+                recarregarLista();
             }
         });
         alertDialog.show();
     }
 
-    public void SaveSeal(View view) {
-        Sale sale= new Sale();
-
-
-        applyDiscount();
+    private void CalcTotalValue() {
+        for(Iterator<EconomicOperationForSaleVo> it = economicOperationForSaleVoArrayList.iterator(); it.hasNext();){
+            EconomicOperationForSaleVo e= it.next();
+            total += e.getQuantitySelect()*e.getEconomicOperation().getSealValue();
+        }
+        TextView finalText = findViewById(R.id.textViewFinalValue);
+        finalText.setText("R$: "+total);
     }
 
-    private void applyDiscount(){
-
+    private void setClientNameInActivity() {
+        TextView clientName = findViewById(R.id.textViewClientName);
+        clientName.setText(clientSelected.getNome().toUpperCase());
     }
 }

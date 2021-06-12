@@ -110,6 +110,7 @@ public class EconomicOperationFragment extends Fragment implements AdapterEconom
         bundle.putString("Name",operation.getName());
         bundle.putInt("Quantity",operation.getQuantity());
         bundle.putDouble("SealValue",operation.getSealValue());
+        bundle.putString("typeQuantity",operation.getTypeQuantity());
         intent.putExtras(bundle);
         startActivity(intent);
     }

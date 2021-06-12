@@ -7,33 +7,41 @@
     android:background="@drawable/gradient_backgroud"
     tools:context=".ClosingSaleActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonCloseSeal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:contentDescription="TODO"
-        app:backgroundTint="@color/Buttomcolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/Buttomcolor"
-        app:srcCompat="@drawable/ic_baseline_check_24"
-        tools:ignore="VectorDrawableCompat" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonCancel2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        app:backgroundTint="@color/Buttomcolor"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewEconomicOperationSelected"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/Buttomcolor"
-        app:srcCompat="@drawable/ic_baseline_clear_24"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listOfPaymentsType" />
+
+    <ImageButton
+        android:id="@+id/lessButton2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rouded_button_delete"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+    <ImageButton
+        android:id="@+id/addButton2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rouded_button"
+        android:onClick="SaveSeal"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_check_24"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
@@ -42,52 +50,29 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="VALOR FINAL"
-        android:textColor="#F4F4F4"
+        android:textColor="@color/IntermediateDMBlue"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButtonCancel2"
-        app:layout_constraintStart_toEndOf="@+id/floatingActionButtonCloseSeal2" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewEconomicOperationSelected"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewFinalValue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewDateOfBuy"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/TextViewDateOfBuy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="sdasda"
-        app:layout_constraintEnd_toEndOf="@+id/textViewClientName"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/textViewClientName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewClientName" />
+        app:layout_constraintEnd_toStartOf="@+id/lessButton2"
+        app:layout_constraintStart_toEndOf="@+id/addButton2" />
 
     <TextView
         android:id="@+id/textViewClientName"
-        android:layout_width="0dp"
+        android:layout_width="395dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="NOME DO CLIENTE"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextViewDateOfBuy2" />
 
@@ -95,23 +80,18 @@
         android:id="@+id/TextViewDateOfBuy2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-light"
         android:text="27/04/2020"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewClientName"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/listOfPaymentsType"
-        android:layout_width="0dp"
+        android:layout_width="347dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/shape_rounded_1"
         android:ems="10"
         android:fontFamily="sans-serif-black"
@@ -123,8 +103,9 @@
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewClientName"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewDateOfBuy" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewClientName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

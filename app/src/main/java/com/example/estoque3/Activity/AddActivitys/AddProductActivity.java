@@ -1,120 +1,158 @@
 package com.example.estoque3.Activity.AddActivitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.SeekBar;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.estoque3.Activity.MainScreens.MainActivity;
 import com.example.estoque3.R;
 import com.example.estoque3.entity.EconomicOperation;
+import com.example.estoque3.util.TypeOfQuantity;
 import com.example.estoque3.util.TypeOfProduct;
 
 import java.text.SimpleDateFormat;
 
-import static com.example.estoque3.util.ConvertsUtil.stringToInteger;
 import static com.example.estoque3.util.FireBaseConfig.firebaseDbReference;
+import static com.example.estoque3.util.TypeOfProduct.PRODUTO;
+import static com.example.estoque3.util.TypeOfProduct.SERVIÇO;
+import static com.example.estoque3.util.TypeOfQuantity.CAIXAS;
+import static com.example.estoque3.util.TypeOfQuantity.KG;
+import static com.example.estoque3.util.TypeOfQuantity.UNIDADES;
+import static java.lang.Integer.parseInt;
 
 
 public class AddProductActivity extends AppCompatActivity {
-    private Spinner ProductType;
-    private TextView counter;
+    private Spinner ProductType,spinnerUnidadeDeMedida;
+    private EditText counter;
+    private TextView textViewQuantidade;
     public TypeOfProduct typeOfProduct;
-    public TextView date;
-    private SimpleDateFormat simpleDateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        SeekBar quantity = findViewById(R.id.seekBarQuantity);
+        ImageButton addButton= findViewById(R.id.AddButton);
+        ImageButton lessButton = findViewById(R.id.LessButton);
         counter = findViewById(R.id.counter);
         ProductType = findViewById(R.id.spinner4);
+        spinnerUnidadeDeMedida= findViewById(R.id.spinnerUnidadeDeMedida);
+        textViewQuantidade = findViewById(R.id.textViewQuantidade);
 
-        String[] listOfPaymentsType = {TypeOfProduct.PRODUTO.toString(), TypeOfProduct.SERVIÇO.toString()};
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter.setText(String.format("%d", parseInt(counter.getText().toString()) + 1));
+            }});
+        lessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter.setText(String.format("%d", parseInt(counter.getText().toString()) - 1));
+            }});
+
+
+
+        TypeOfProduct[] listOfPaymentsType = {PRODUTO, SERVIÇO};
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.item_list_spinner, listOfPaymentsType);
 
+        TypeOfQuantity[] listOfMed = {UNIDADES, CAIXAS, KG};
+        ArrayAdapter adapter =new ArrayAdapter(getApplicationContext(),R.layout.item_list_spinner,listOfMed);
+
+
+        spinnerUnidadeDeMedida.setAdapter(adapter);
         ProductType.setAdapter(arrayAdapter);
+
         ProductType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (ProductType.getSelectedItem().equals(TypeOfProduct.SERVIÇO.toString())) {
-                    quantity.setEnabled(false);
+                if (ProductType.getSelectedItem().equals(SERVIÇO.toString())) {
+                    spinnerUnidadeDeMedida.setEnabled(false);
+                    spinnerUnidadeDeMedida.setVisibility(View.INVISIBLE);
+                    addButton.setEnabled(false);
+                    addButton.setVisibility(View.INVISIBLE);
+                    lessButton.setEnabled(false);
+                    lessButton.setVisibility(View.INVISIBLE);
                     counter.setText("0");
+                    counter.setVisibility(View.INVISIBLE);
+                    textViewQuantidade.setVisibility(View.INVISIBLE);
+
                 }else{
-                    quantity.setEnabled(true);
-                    quantity.setProgress(0);
-                    quantity.animate().start();
-                    counter.setText("0");
+                    spinnerUnidadeDeMedida.setEnabled(true);
+                    spinnerUnidadeDeMedida.setVisibility(View.VISIBLE);
+                    addButton.setEnabled(true);
+                    addButton.setVisibility(View.VISIBLE);
+                    lessButton.setEnabled(true);
+                    lessButton.setVisibility(View.VISIBLE);
+                    counter.setVisibility(View.VISIBLE);
+                    textViewQuantidade.setVisibility(View.VISIBLE);
                 }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        quantity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-                counter.setText(String.valueOf(progress));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
+            public void onNothingSelected(AdapterView<?> parent) {}});
+        counter.setText("0");
     }
-
-
-
 
     public void ValidFields(View view){
         EditText productName = findViewById(R.id.editTextNameProduct);
         EditText buyValue = findViewById(R.id.editTextBuyValue);
         EditText sellValue = findViewById(R.id.editTextSellValue);
 
-
         if (productName.getText().toString().equals(null) ){
             Toast toast=Toast. makeText(getApplicationContext(),"Entre com um nome",Toast. LENGTH_SHORT);
             toast. show();
-        } else if(buyValue.getText().toString().equals(null)){
+        }
+
+        if(buyValue.getText().toString().equals(null)){
             Toast toast=Toast. makeText(getApplicationContext(),"Entre com o valor de compra do produto",Toast. LENGTH_SHORT);
             toast. show();
 
-        }else if (sellValue.getText().toString().equals(null)){
+        }
+
+        if (sellValue.getText().toString().equals(null)){
             Toast toast=Toast. makeText(getApplicationContext(),"Entre com o valor de venda do produto",Toast. LENGTH_SHORT);
             toast. show();
-        }else if(ProductType.getSelectedItem()!=String.valueOf(typeOfProduct.SERVIÇO) && Integer.parseInt(counter.getText().toString())==0){
+        }
+
+        if(ProductType.getSelectedItem()!=SERVIÇO && parseInt(counter.getText().toString())==0){
                 Toast toast=Toast. makeText(getApplicationContext(),"Entre com a quantidade de produtos",Toast. LENGTH_SHORT);
                 toast. show();
-        }else if (ProductType.getSelectedItem()==null){
+        }
+
+        if (ProductType.getSelectedItem()==null){
             Toast toast=Toast. makeText(getApplicationContext(),"Escolha um tipo",Toast. LENGTH_SHORT);
             toast. show();
+        }
+        if (ProductType.getSelectedItem()== PRODUTO){
+            if (Integer.parseInt(counter.getText().toString())==0){
+                Toast toast=Toast. makeText(getApplicationContext(),"Adicione a quantidade",Toast. LENGTH_SHORT);
+                toast. show();
+            }
         }else{
+            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+            saveProduct(new EconomicOperation(productName.getText().toString(),Double.parseDouble(sellValue.getText().toString()),
+                    Double.parseDouble(buyValue.getText().toString()),ProductType.getSelectedItem().toString(),
+                    Integer.parseInt(counter.getText().toString()),simpleDateFormat.format(System.currentTimeMillis()),
+                    calcContributionValue(Double.parseDouble(sellValue.getText().toString()),Double.parseDouble(buyValue.getText().toString())),
+                    spinnerUnidadeDeMedida.getSelectedItem().toString()));
+        }
+        if (ProductType.getSelectedItem()==SERVIÇO){
+            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
             saveProduct(new EconomicOperation(productName.getText().toString(),
                     Double.parseDouble(sellValue.getText().toString()),
                     Double.parseDouble(buyValue.getText().toString()),
                     ProductType.getSelectedItem().toString(),
-                    stringToInteger(counter.getText().toString()),
                     simpleDateFormat.format(System.currentTimeMillis()),
-                    calcContributionValue(Double.parseDouble(sellValue.getText().toString()),Double.parseDouble(buyValue.getText().toString()))));
+                    calcContributionValue(Double.parseDouble(sellValue.getText().toString()),Double.parseDouble(buyValue.getText().toString()))
+            ));
         }
     }
 
@@ -124,12 +162,12 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void saveProduct(EconomicOperation economicOperation) {
         economicOperation.setId(firebaseDbReference.push().getKey());
-        Toast.makeText(AddProductActivity.this, economicOperation.save(), Toast.LENGTH_SHORT).show();
+        economicOperation.save();
+        Toast.makeText(AddProductActivity.this, "Adicionado", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     public void cancelRegistrer (View view){
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
     }
 }

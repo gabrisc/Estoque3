@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.estoque3.R;
 import com.example.estoque3.entity.EconomicOperation;
+import com.example.estoque3.util.TypeOfProduct;
 
 import java.util.List;
 
@@ -37,9 +38,17 @@ public class AdapterEconomicOperation extends RecyclerView.Adapter<AdapterEconom
     @Override
     public void onBindViewHolder(@NonNull AdapterEconomicOperation.MyViewHolder holder, int position) {
         EconomicOperation economicOperation = economicOperationList.get(position);
-        holder.name.setText(economicOperation.getName().toUpperCase());
-        holder.quantity.setText("Und: " +String.valueOf(economicOperation.getQuantity()));
-        holder.sealValue.setText("R$: "+String.valueOf(economicOperation.getSealValue()));
+        if (economicOperation.getType().equals(TypeOfProduct.PRODUTO.toString())){
+            holder.name.setText(economicOperation.getName().toUpperCase());
+            holder.quantity.setText(String.format("%d %s", economicOperation.getQuantity(), economicOperation.getTypeQuantity()));
+            holder.sealValue.setText("R$: "+String.valueOf(economicOperation.getSealValue()));holder.name.setText(economicOperation.getName().toUpperCase());
+        }
+
+        if (economicOperation.getType().equals(TypeOfProduct.SERVIÇO.toString())){
+            holder.name.setText(economicOperation.getName().toUpperCase());
+            holder.sealValue.setText("Venda: "+String.valueOf(economicOperation.getSealValue())+"R$");holder.name.setText(economicOperation.getName().toUpperCase());
+            holder.quantity.setText("Custo: " +String.valueOf(economicOperation.getExpenseValue())+" R$");
+        }
     }
 
     @Override

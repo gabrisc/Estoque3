@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import com.example.estoque3.R;
 import com.example.estoque3.entity.Client;
 import com.example.estoque3.entity.EconomicOperation;
 import com.example.estoque3.entity.EconomicOperationForSaleVo;
+import com.example.estoque3.util.TypeOfProduct;
 import com.example.estoque3.util.adapters.AdapterClient;
 import com.example.estoque3.util.adapters.AdapterEconomicOperationForSales;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,9 +30,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
 import static com.example.estoque3.entity.EconomicOperation.getIdUser;
 import static com.example.estoque3.util.FireBaseConfig.firebaseInstance;
+import static java.lang.Integer.parseInt;
 
 public class AddSaleActivity extends AppCompatActivity implements AdapterEconomicOperationForSales.OnEconomicOperationForSaleListener, AdapterClient.OnClientListener {
 
@@ -37,11 +45,10 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
     private AdapterClient adapterClient;
     private List<EconomicOperation> listProduct= new ArrayList<>();
     private List<Client> clientList= new ArrayList<>();
-    public static List<EconomicOperationForSaleVo> economicOperationForSaleVoArrayList = new ArrayList<>();
+    public static Set<EconomicOperationForSaleVo> economicOperationForSaleVoArrayList = new HashSet<>();
+    public static Client clientSelected;
     private RecyclerView recyclerView;
-    private Client clientSelected;
     private AlertDialog alertDialog;
-    private Double totalValue;
     private TextView totalValueTextView,textViewOrder;
 
 
@@ -50,9 +57,8 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sale);
         buttonVisibilityEnable(false);
-        floatingVisibilityEnable(true);
+        visibilidadeDosBotoes(true);
         textViewOrder= findViewById(R.id.textViewOrder);
-        totalValue = 0.0;
         findAllClients();
         reloadRecyclerClient();
     }
@@ -62,70 +68,76 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
         super.onStop();
         this.finish();
         economicOperationForSaleVoArrayList.clear();
+        clientSelected=null;
     }
 
     @Override
     public void onEconomicOperationForSaleClick(int position) {
         EconomicOperation economicOperationSelect = listProduct.get(position);
+        if (economicOperationSelect.getType().equals(TypeOfProduct.PRODUTO.toString())){
+            callDialogForProduct(economicOperationSelect,position,false);
+        }else{
+            callDialogForProduct(economicOperationSelect,position,true);
+        }
+    }
 
+    private void callDialogForProduct(EconomicOperation economicOperationSelect,int position,Boolean isService){
         View mDialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_quantity,null);
-        Button buttonAddQuantity =  mDialogView.findViewById(R.id.buttonDeleteEconomicOperation);
-        SeekBar seekBar = mDialogView.findViewById(R.id.seekBarQuantityForSale);
-        TextView counter = mDialogView.findViewById(R.id.textViewCounter);
-        TextView economicOperationselectName = mDialogView.findViewById(R.id.textViewNameProduct);
+        TextView textViewMensage = mDialogView.findViewById(R.id.textViewMensage);
+        Button buttonAddQuantity =  mDialogView.findViewById(R.id.buttonAddDiscount);
+        ImageButton lessB = mDialogView.findViewById(R.id.lessB);
+        ImageButton addB = mDialogView.findViewById(R.id.addB);
+        EditText counter = mDialogView.findViewById(R.id.textViewCounter);
+        counter.setText("0");
 
-        economicOperationselectName.setText(economicOperationSelect.getName());
+        if (isService){
+         textViewMensage.setText("Deseja adicionar esse serviço?");
+         lessB.setVisibility(View.INVISIBLE);
+         addB.setVisibility(View.INVISIBLE);
+         counter.setVisibility(View.INVISIBLE);
+        }
 
-        seekBar.setProgress(1);
-        seekBar.setMax(economicOperationSelect.getQuantity());
+        addB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter.setText(String.format("%d", parseInt(counter.getText().toString()) + 1));
+            }});
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
+        lessB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-                counter.setText(String.valueOf(progress));
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}});
+            public void onClick(View v) {
+                counter.setText(String.format("%d", parseInt(counter.getText().toString()) - 1));
+            }});
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(mDialogView).setTitle("Quantidade");
         alertDialog=builder.create();
 
         buttonAddQuantity.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
                 if (counter.getText().toString().equals("0")) {
                     Toast.makeText(AddSaleActivity.this, "Selecione uma quantidade", Toast.LENGTH_SHORT).show();
-
                 } else {
-
                     if (Integer.parseInt(counter.getText().toString()) == economicOperationSelect.getQuantity()) {
-                        addEconomicOperation(new EconomicOperationForSaleVo(economicOperationSelect,economicOperationSelect.getQuantity(),clientSelected));
+                        addEconomicOperation(new EconomicOperationForSaleVo(economicOperationSelect,economicOperationSelect.getQuantity()));
                         listProduct.remove(position);
                         reloadRecyclerEconomicOperation();
                         alertDialog.dismiss();
                         buttonVisibilityEnable(true);
-
                     } else {
                         int quantityResult = economicOperationSelect.getQuantity() - Integer.parseInt(counter.getText().toString());
                         listProduct.get(position).setQuantity(quantityResult);
-                        addEconomicOperation(new EconomicOperationForSaleVo(economicOperationSelect,Integer.parseInt(counter.getText().toString()),clientSelected));
+                        addEconomicOperation(new EconomicOperationForSaleVo(economicOperationSelect,Integer.parseInt(counter.getText().toString())));
                         reloadRecyclerEconomicOperation();
                         alertDialog.dismiss();
                         buttonVisibilityEnable(true);
-
                     }
                 }
             }});
         alertDialog.show();
     }
 
-    private void floatingVisibilityEnable(Boolean enable){
+    private void visibilidadeDosBotoes(Boolean enable){
         FloatingActionButton floatingActionButtonAddNewClient;
         floatingActionButtonAddNewClient= findViewById(R.id.floatingActionButtonAddNewClient);
         if (enable.equals(Boolean.TRUE)){
@@ -136,25 +148,29 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
     }
 
     private void addEconomicOperation(EconomicOperationForSaleVo economicOperationForSaleVo){
-        if (economicOperationForSaleVoArrayList.isEmpty()){
-            economicOperationForSaleVoArrayList.add(economicOperationForSaleVo);
-        }else{
-            for (EconomicOperationForSaleVo e:economicOperationForSaleVoArrayList){
-                if(e.getEconomicOperation().getId().equals(economicOperationForSaleVo.getEconomicOperation().getId())){
-                    e.setQuantitySelect(e.getQuantitySelect()+economicOperationForSaleVo.getQuantitySelect());
-                }
+        boolean find =false;
+        for(Iterator<EconomicOperationForSaleVo> it = economicOperationForSaleVoArrayList.iterator(); it.hasNext();){
+            EconomicOperationForSaleVo e= it.next();
+            if (e.getEconomicOperation().getId().equals(economicOperationForSaleVo.getEconomicOperation().getId())){
+                e.setQuantitySelect(economicOperationForSaleVo.getQuantitySelect() + e.getQuantitySelect());
+                //economicOperationForSaleVoArrayList.add(e);
+                find=true;
             }
         }
+        if(!find){
+            economicOperationForSaleVoArrayList.add(economicOperationForSaleVo);
+        }
+
     }
 
-    public void closingSale(View view){
-    startActivity( new Intent(getApplicationContext(), ClosingSaleActivity.class));
+    public void fechandoVenda(View view){
+        startActivity( new Intent(getApplicationContext(), ClosingSaleActivity.class));
     }
 
     @Override
     public void onClientOperationClick(int position) {
         clientSelected = clientList.get(position);
-        floatingVisibilityEnable(false);
+        visibilidadeDosBotoes(false);
         clientList.clear();
         findAllEconomicOperation();
         reloadRecyclerEconomicOperation();

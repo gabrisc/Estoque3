@@ -7,6 +7,39 @@
     android:background="@drawable/gradient_backgroud"
     tools:context=".Activity.UpdatesActivitys.UpdateProductActivity">
 
+    <Spinner
+        android:id="@+id/spinnerUnidadeDeMedidaUpdate"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_edit_text"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSellValueForEdit"
+        app:layout_constraintStart_toStartOf="@+id/editTextSellValueForEdit"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSellValueForEdit" />
+
+    <ImageButton
+        android:id="@+id/lessButtonUptade"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rouded_button_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/valueOfSeekUpdate"
+        app:layout_constraintEnd_toStartOf="@+id/valueOfSeekUpdate"
+        app:layout_constraintStart_toStartOf="@+id/textViewQuant"
+        app:layout_constraintTop_toTopOf="@+id/valueOfSeekUpdate"
+        app:srcCompat="@drawable/ic_baseline_horizontal_rule_24" />
+
+    <ImageButton
+        android:id="@+id/addButtonUpdate"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rouded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/valueOfSeekUpdate"
+        app:layout_constraintEnd_toEndOf="@+id/textViewQuant"
+        app:layout_constraintStart_toEndOf="@+id/valueOfSeekUpdate"
+        app:layout_constraintTop_toTopOf="@+id/valueOfSeekUpdate"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
     <TextView
         android:id="@+id/textView49"
         android:layout_width="wrap_content"
@@ -15,11 +48,9 @@
         android:text="Editar Produto"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button16"
@@ -35,15 +66,15 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:backgroundTint="@color/Buttomcolor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valueOfSeek" />
+        app:layout_constraintEnd_toEndOf="@+id/addButtonUpdate"
+        app:layout_constraintStart_toStartOf="@+id/lessButtonUptade"
+        app:layout_constraintTop_toBottomOf="@+id/valueOfSeekUpdate" />
 
     <Button
         android:id="@+id/button17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rouded_button_delete"
         android:fontFamily="sans-serif-black"
         android:onClick="deleteEconomicOperation"
@@ -61,7 +92,7 @@
         android:id="@+id/editTextExpenseValueforEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rouded_edit_text"
         android:ems="10"
         android:fontFamily="sans-serif-thin"
@@ -81,7 +112,7 @@
         android:id="@+id/editTextSellValueForEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rouded_edit_text"
         android:ems="10"
         android:fontFamily="sans-serif-thin"
@@ -98,45 +129,32 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextExpenseValueforEdit" />
 
     <TextView
-        android:id="@+id/textView51"
+        android:id="@+id/textViewQuant"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_edit_text"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-thin"
-        android:gravity="center"
 
+        android:gravity="center"
         android:hapticFeedbackEnabled="false"
         android:text="Quantidade "
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSellValueForEdit"
-        app:layout_constraintStart_toStartOf="@+id/editTextSellValueForEdit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSellValueForEdit" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerUnidadeDeMedidaUpdate"
+        app:layout_constraintStart_toStartOf="@+id/spinnerUnidadeDeMedidaUpdate"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerUnidadeDeMedidaUpdate" />
 
-    <SeekBar
-        android:id="@+id/seekBarQuantityEdit"
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        android:max="100"
-        android:progress="1"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView51"
-        app:layout_constraintStart_toStartOf="@+id/textView51"
-        app:layout_constraintTop_toBottomOf="@+id/textView51" />
-
-    <TextView
-        android:id="@+id/valueOfSeek"
+    <EditText
+        android:id="@+id/valueOfSeekUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantityEdit"
-        app:layout_constraintStart_toStartOf="@+id/seekBarQuantityEdit"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarQuantityEdit" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewQuant"
+        app:layout_constraintStart_toStartOf="@+id/textViewQuant"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuant" />
 
     <EditText
         android:id="@+id/editTextNameProductForEdit"
@@ -157,17 +175,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView49"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/editTextNameProductForEdit"
         app:layout_constraintEnd_toEndOf="@+id/editTextNameProductForEdit"
         app:layout_constraintStart_toEndOf="@+id/textView49"
-        app:layout_constraintTop_toBottomOf="@+id/textView49"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView49" />
 </androidx.constraintlayout.widget.ConstraintLayout>
