@@ -20,7 +20,7 @@ import com.example.estoque3.util.TypeOfProduct;
 
 import static com.example.estoque3.util.TypeOfQuantity.CAIXAS;
 import static com.example.estoque3.util.TypeOfQuantity.KG;
-import static com.example.estoque3.util.TypeOfQuantity.UNIDADES;
+import static com.example.estoque3.util.TypeOfQuantity.UND;
 import static java.lang.Integer.parseInt;
 
 public class UpdateProductActivity extends AppCompatActivity {
@@ -44,8 +44,6 @@ public class UpdateProductActivity extends AppCompatActivity {
         typeOfQuantity = findViewById(R.id.spinnerUnidadeDeMedidaUpdate);
         expense = findViewById(R.id.editTextExpenseValueforEdit);
         seal = findViewById(R.id.editTextSellValueForEdit);
-        AddButtonUpdate = findViewById(R.id.addButtonUpdate);
-        LessButtonUpdate = findViewById(R.id.lessButtonUptade);
         quantityText = findViewById(R.id.textViewQuant);
 
         date.setText(economicOperation.getDate());
@@ -54,7 +52,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         expense.setText(String.format("%s", economicOperation.getExpenseValue()));
         seal.setText(String.format("%s", economicOperation.getSealValue()));
 
-        TypeOfQuantity[] listOfMed = {UNIDADES, CAIXAS, KG};
+        TypeOfQuantity[] listOfMed = {UND, CAIXAS, KG};
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.item_list_spinner,listOfMed);
         typeOfQuantity.setAdapter(adapter);
 

@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -45,7 +46,7 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
     private AdapterClient adapterClient;
     private List<EconomicOperation> listProduct= new ArrayList<>();
     private List<Client> clientList= new ArrayList<>();
-    public static Set<EconomicOperationForSaleVo> economicOperationForSaleVoArrayList = new HashSet<>();
+    public final static Set<EconomicOperationForSaleVo> economicOperationForSaleVoArrayList = new HashSet<>();
     public static Client clientSelected;
     private RecyclerView recyclerView;
     private AlertDialog alertDialog;

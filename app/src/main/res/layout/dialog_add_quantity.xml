@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FFFFFF"
     android:gravity="center|top"
     android:orientation="vertical">
 
@@ -33,6 +34,7 @@
         android:id="@+id/textViewMensage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Selecione a quatidade:"
         android:textColor="#000000"
@@ -47,14 +49,14 @@
 
     <ImageButton
         android:id="@+id/lessB"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rouded_button_delete"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCounter"
         app:layout_constraintEnd_toStartOf="@+id/textViewCounter"
         app:layout_constraintTop_toTopOf="@+id/textViewCounter"
-        app:srcCompat="@drawable/ic_baseline_horizontal_rule_24"
+        app:srcCompat="@drawable/ic_baseline_exposure_neg_1_24"
         tools:ignore="VectorDrawableCompat"
         tools:layout_conversion_absoluteHeight="40dp"
         tools:layout_conversion_absoluteWidth="101dp" />
@@ -76,14 +78,14 @@
 
     <ImageButton
         android:id="@+id/addB"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="32dp"
         android:background="@drawable/rouded_button"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCounter"
         app:layout_constraintStart_toEndOf="@+id/textViewCounter"
         app:layout_constraintTop_toTopOf="@+id/textViewCounter"
-        app:srcCompat="@drawable/ic_baseline_add_24"
+        app:srcCompat="@drawable/ic_baseline_exposure_plus_1_24"
         tools:ignore="VectorDrawableCompat"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="161dp" />

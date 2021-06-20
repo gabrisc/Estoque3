@@ -18,79 +18,22 @@
         app:layout_constraintStart_toStartOf="@+id/editTextSellValueForEdit"
         app:layout_constraintTop_toBottomOf="@+id/editTextSellValueForEdit" />
 
-    <ImageButton
-        android:id="@+id/lessButtonUptade"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/rouded_button_delete"
-        app:layout_constraintBottom_toBottomOf="@+id/valueOfSeekUpdate"
-        app:layout_constraintEnd_toStartOf="@+id/valueOfSeekUpdate"
-        app:layout_constraintStart_toStartOf="@+id/textViewQuant"
-        app:layout_constraintTop_toTopOf="@+id/valueOfSeekUpdate"
-        app:srcCompat="@drawable/ic_baseline_horizontal_rule_24" />
-
-    <ImageButton
-        android:id="@+id/addButtonUpdate"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/rouded_button"
-        app:layout_constraintBottom_toBottomOf="@+id/valueOfSeekUpdate"
-        app:layout_constraintEnd_toEndOf="@+id/textViewQuant"
-        app:layout_constraintStart_toEndOf="@+id/valueOfSeekUpdate"
-        app:layout_constraintTop_toTopOf="@+id/valueOfSeekUpdate"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
-
     <TextView
         android:id="@+id/textView49"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Editar Produto"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-light"
+        android:text="EDITAR PRODUTO"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rouded_button"
-        android:fontFamily="sans-serif-black"
-        android:onClick="validateFields"
-        android:text="Salvar"
-        android:textColor="@color/TextColor"
-        android:textColorHint="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:backgroundTint="@color/Buttomcolor"
-        app:layout_constraintEnd_toEndOf="@+id/addButtonUpdate"
-        app:layout_constraintStart_toStartOf="@+id/lessButtonUptade"
-        app:layout_constraintTop_toBottomOf="@+id/valueOfSeekUpdate" />
-
-    <Button
-        android:id="@+id/button17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button_delete"
-        android:fontFamily="sans-serif-black"
-        android:onClick="deleteEconomicOperation"
-        android:text="Apagar"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#FF0000"
-        android:textColorHint="#FFFFFF"
-        android:textStyle="bold"
-        app:backgroundTint="#FF0051"
-        app:layout_constraintEnd_toEndOf="@+id/button16"
-        app:layout_constraintStart_toStartOf="@+id/button16"
-        app:layout_constraintTop_toBottomOf="@+id/button16" />
-
     <EditText
         android:id="@+id/editTextExpenseValueforEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rouded_edit_text"
@@ -110,7 +53,7 @@
 
     <EditText
         android:id="@+id/editTextSellValueForEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rouded_edit_text"
@@ -148,18 +91,21 @@
 
     <EditText
         android:id="@+id/valueOfSeekUpdate"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_edit_text"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewQuant"
-        app:layout_constraintStart_toStartOf="@+id/textViewQuant"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerUnidadeDeMedidaUpdate"
+        app:layout_constraintStart_toStartOf="@+id/spinnerUnidadeDeMedidaUpdate"
         app:layout_constraintTop_toBottomOf="@+id/textViewQuant" />
 
     <EditText
         android:id="@+id/editTextNameProductForEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/rouded_edit_text"
         android:ems="10"
         android:fontFamily="sans-serif-thin"
@@ -181,9 +127,38 @@
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-thin"
         android:text="TextView"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNameProductForEdit"
         app:layout_constraintEnd_toEndOf="@+id/editTextNameProductForEdit"
         app:layout_constraintStart_toEndOf="@+id/textView49"
         app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rouded_button"
+        android:onClick="validateFields"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rouded_button_delete"
+        android:onClick="deleteEconomicOperation"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,92 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout11"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/textViewMensage"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:text="Selecione a quatidade:"
+        android:text="SELECIONE A QUANTIDADE"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewNameProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/seekBarQuantityForSale"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCounter" />
 
     <TextView
         android:id="@+id/textViewCounter"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="0"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMensage" />
 
-    <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <ImageButton
+        android:id="@+id/buttonAddDiscount"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rouded_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantityForSale"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="@+id/seekBarQuantityForSale"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarQuantityForSale"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
 
-        <Button
-            android:id="@+id/buttonDeleteDiscount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-
-            android:layout_weight="1"
-            android:background="@drawable/rouded_button"
-            android:fontFamily="sans-serif-black"
-            android:onClick="ValidFields"
-            android:text="adicionar"
-            android:textColor="@color/TextColor"
-            android:textColorHint="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="@color/Buttomcolor" />
-
-        <Button
-            android:id="@+id/buttonAddDiscount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/rouded_button_delete"
-            android:fontFamily="sans-serif-black"
-            android:onClick="ValidFields"
-            android:text="EXCLUIR"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#FF0000"
-            android:textColorHint="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="#FF0051" />
-
-    </LinearLayout>
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/buttonDeleteDiscount"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rouded_button_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarQuantityForSale"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@+id/seekBarQuantityForSale"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarQuantityForSale"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>

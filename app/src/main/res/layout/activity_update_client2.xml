@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/TextViewDateClient2"
-        android:layout_width="75dp"
-        android:layout_height="16dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-thin"
         android:text="TextView"
         android:textColor="@color/TextColor"
-        android:textSize="16dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextClientName"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,9 +23,11 @@
 
     <EditText
         android:id="@+id/editTextClientName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="55dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/rouded_edit_text"
         android:ems="10"
         android:fontFamily="sans-serif-thin"
@@ -43,7 +45,7 @@
 
     <EditText
         android:id="@+id/editTextEmailAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/rouded_edit_text"
@@ -65,7 +67,8 @@
         android:id="@+id/textView47"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-light"
         android:text="ATUALIZAR"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
@@ -74,43 +77,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rouded_button"
-        android:fontFamily="sans-serif-black"
-        android:onClick="validateFields"
-        android:text="ATUALIZAR"
-        android:textColor="@color/TextColor"
-        android:textColorHint="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:backgroundTint="@color/Buttomcolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress"
-        app:layout_constraintVertical_bias="0.13" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button_delete"
-        android:fontFamily="sans-serif-black"
-        android:onClick="deleteEconomicOperation"
-        android:text="Apagar"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#FF0000"
-        android:textColorHint="#FFFFFF"
-        android:textStyle="bold"
-        app:backgroundTint="#FF0051"
-        app:layout_constraintEnd_toEndOf="@+id/button12"
-        app:layout_constraintStart_toStartOf="@+id/button12"
-        app:layout_constraintTop_toBottomOf="@+id/button12" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -128,5 +94,31 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextClientName"
         app:layout_constraintStart_toStartOf="@+id/editTextClientName"
         app:layout_constraintTop_toBottomOf="@+id/editTextClientName" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rouded_button_delete"
+        android:onClick="deleteEconomicOperation"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rouded_button"
+        android:onClick="validateFields"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

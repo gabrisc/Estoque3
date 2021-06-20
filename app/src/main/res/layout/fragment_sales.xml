@@ -36,7 +36,7 @@
         android:id="@+id/textView22"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="VENDAS"
         android:textColor="#FFFFFF"

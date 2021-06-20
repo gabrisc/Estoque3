@@ -12,8 +12,8 @@
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-light"
         android:text="Novo Produto"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
@@ -21,53 +21,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rouded_button"
-        android:fontFamily="sans-serif-black"
-        android:onClick="ValidFields"
-        android:text="Cadastrar Produto"
-        android:textColor="@color/TextColor"
-        android:textColorHint="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:backgroundTint="@color/Buttomcolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textViewQuantidade"
-        app:layout_constraintStart_toStartOf="@+id/textViewQuantidade"
-        app:layout_constraintTop_toBottomOf="@+id/counter"
-        app:layout_constraintVertical_bias="0.20" />
-
     <EditText
         android:id="@+id/editTextSellValue"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Valor de venda"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextBuyValue"
-        app:layout_constraintStart_toStartOf="@+id/editTextBuyValue"
-        app:layout_constraintTop_toBottomOf="@+id/editTextBuyValue"
-        android:background="@drawable/rouded_edit_text"
-        android:fontFamily="sans-serif-thin"
-        android:hapticFeedbackEnabled="false"
-
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
+
         android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextBuyValue"
         app:layout_constraintHorizontal_bias="0.503"
-        />
+        app:layout_constraintStart_toStartOf="@+id/editTextBuyValue"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBuyValue" />
 
     <EditText
         android:id="@+id/editTextNameProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/rouded_edit_text"
         android:ems="10"
         android:fontFamily="sans-serif-thin"
@@ -88,32 +69,31 @@
 
     <EditText
         android:id="@+id/editTextBuyValue"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_edit_text"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hapticFeedbackEnabled="false"
         android:hint="Custo/Despesas"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNameProduct"
-        app:layout_constraintStart_toStartOf="@+id/editTextNameProduct"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNameProduct"
-        android:background="@drawable/rouded_edit_text"
-        android:fontFamily="sans-serif-thin"
-        android:hapticFeedbackEnabled="false"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNameProduct"
         app:layout_constraintHorizontal_bias="0.503"
-        />
+        app:layout_constraintStart_toStartOf="@+id/editTextNameProduct"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameProduct" />
 
     <TextView
         android:id="@+id/textViewQuantidade"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-thin"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:hapticFeedbackEnabled="false"
         android:text="QUANTIDADE"
@@ -126,36 +106,20 @@
         app:layout_constraintStart_toStartOf="@+id/spinner4"
         app:layout_constraintTop_toBottomOf="@+id/spinnerUnidadeDeMedida" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rouded_button_delete"
-        android:fontFamily="sans-serif-black"
-        android:onClick="cancelRegistrer"
-        android:text="CANCELAR"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#FF0000"
-        android:textColorHint="#FFFFFF"
-        android:textStyle="bold"
-        app:backgroundTint="#FF0051"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
 
     <EditText
         android:id="@+id/counter"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_edit_text"
+        android:gravity="center"
         android:text="0"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textViewQuantidade"
-        app:layout_constraintStart_toStartOf="@+id/textViewQuantidade"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerUnidadeDeMedida"
+        app:layout_constraintStart_toStartOf="@+id/spinnerUnidadeDeMedida"
         app:layout_constraintTop_toBottomOf="@+id/textViewQuantidade" />
 
     <Spinner
@@ -174,28 +138,6 @@
         app:layout_constraintStart_toStartOf="@+id/editTextSellValue"
         app:layout_constraintTop_toBottomOf="@+id/editTextSellValue" />
 
-    <ImageButton
-        android:id="@+id/AddButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:background="@drawable/rouded_button"
-        app:layout_constraintBottom_toBottomOf="@+id/counter"
-        app:layout_constraintStart_toEndOf="@+id/counter"
-        app:layout_constraintTop_toTopOf="@+id/counter"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
-
-    <ImageButton
-        android:id="@+id/LessButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rouded_button_delete"
-        app:layout_constraintBottom_toBottomOf="@+id/counter"
-        app:layout_constraintEnd_toStartOf="@+id/counter"
-        app:layout_constraintTop_toTopOf="@+id/counter"
-        app:srcCompat="@drawable/ic_baseline_horizontal_rule_24" />
-
     <Spinner
         android:id="@+id/spinnerUnidadeDeMedida"
         android:layout_width="0dp"
@@ -206,5 +148,31 @@
         app:layout_constraintEnd_toEndOf="@+id/spinner4"
         app:layout_constraintStart_toStartOf="@+id/spinner4"
         app:layout_constraintTop_toBottomOf="@+id/spinner4" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rouded_button"
+        android:onClick="ValidFields"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rouded_button_delete"
+        android:onClick="cancelRegistrer"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

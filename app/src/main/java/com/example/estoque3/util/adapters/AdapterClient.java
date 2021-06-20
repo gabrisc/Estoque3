@@ -36,7 +36,7 @@ public class AdapterClient extends RecyclerView.Adapter<AdapterClient.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Client client = clientList.get(position);
-        holder.nome.setText(client.getNome());
+        holder.nome.setText(client.getNome().toUpperCase());
     }
 
     @Override

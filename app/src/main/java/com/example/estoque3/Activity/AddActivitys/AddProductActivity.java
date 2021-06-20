@@ -25,7 +25,7 @@ import static com.example.estoque3.util.TypeOfProduct.PRODUTO;
 import static com.example.estoque3.util.TypeOfProduct.SERVIÇO;
 import static com.example.estoque3.util.TypeOfQuantity.CAIXAS;
 import static com.example.estoque3.util.TypeOfQuantity.KG;
-import static com.example.estoque3.util.TypeOfQuantity.UNIDADES;
+import static com.example.estoque3.util.TypeOfQuantity.UND;
 import static java.lang.Integer.parseInt;
 
 
@@ -40,30 +40,15 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        ImageButton addButton= findViewById(R.id.AddButton);
-        ImageButton lessButton = findViewById(R.id.LessButton);
         counter = findViewById(R.id.counter);
         ProductType = findViewById(R.id.spinner4);
         spinnerUnidadeDeMedida= findViewById(R.id.spinnerUnidadeDeMedida);
         textViewQuantidade = findViewById(R.id.textViewQuantidade);
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                counter.setText(String.format("%d", parseInt(counter.getText().toString()) + 1));
-            }});
-        lessButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                counter.setText(String.format("%d", parseInt(counter.getText().toString()) - 1));
-            }});
-
-
-
         TypeOfProduct[] listOfPaymentsType = {PRODUTO, SERVIÇO};
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.item_list_spinner, listOfPaymentsType);
 
-        TypeOfQuantity[] listOfMed = {UNIDADES, CAIXAS, KG};
+        TypeOfQuantity[] listOfMed = {UND, CAIXAS, KG};
         ArrayAdapter adapter =new ArrayAdapter(getApplicationContext(),R.layout.item_list_spinner,listOfMed);
 
 
@@ -77,10 +62,6 @@ public class AddProductActivity extends AppCompatActivity {
                 if (ProductType.getSelectedItem().equals(SERVIÇO.toString())) {
                     spinnerUnidadeDeMedida.setEnabled(false);
                     spinnerUnidadeDeMedida.setVisibility(View.INVISIBLE);
-                    addButton.setEnabled(false);
-                    addButton.setVisibility(View.INVISIBLE);
-                    lessButton.setEnabled(false);
-                    lessButton.setVisibility(View.INVISIBLE);
                     counter.setText("0");
                     counter.setVisibility(View.INVISIBLE);
                     textViewQuantidade.setVisibility(View.INVISIBLE);
@@ -88,10 +69,6 @@ public class AddProductActivity extends AppCompatActivity {
                 }else{
                     spinnerUnidadeDeMedida.setEnabled(true);
                     spinnerUnidadeDeMedida.setVisibility(View.VISIBLE);
-                    addButton.setEnabled(true);
-                    addButton.setVisibility(View.VISIBLE);
-                    lessButton.setEnabled(true);
-                    lessButton.setVisibility(View.VISIBLE);
                     counter.setVisibility(View.VISIBLE);
                     textViewQuantidade.setVisibility(View.VISIBLE);
                 }
@@ -135,14 +112,14 @@ public class AddProductActivity extends AppCompatActivity {
             if (Integer.parseInt(counter.getText().toString())==0){
                 Toast toast=Toast. makeText(getApplicationContext(),"Adicione a quantidade",Toast. LENGTH_SHORT);
                 toast. show();
+            }else{
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+                saveProduct(new EconomicOperation(productName.getText().toString(),Double.parseDouble(sellValue.getText().toString()),
+                        Double.parseDouble(buyValue.getText().toString()),ProductType.getSelectedItem().toString(),
+                        Integer.parseInt(counter.getText().toString()),simpleDateFormat.format(System.currentTimeMillis()),
+                        calcContributionValue(Double.parseDouble(sellValue.getText().toString()),Double.parseDouble(buyValue.getText().toString())),
+                        spinnerUnidadeDeMedida.getSelectedItem().toString()));
             }
-        }else{
-            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
-            saveProduct(new EconomicOperation(productName.getText().toString(),Double.parseDouble(sellValue.getText().toString()),
-                    Double.parseDouble(buyValue.getText().toString()),ProductType.getSelectedItem().toString(),
-                    Integer.parseInt(counter.getText().toString()),simpleDateFormat.format(System.currentTimeMillis()),
-                    calcContributionValue(Double.parseDouble(sellValue.getText().toString()),Double.parseDouble(buyValue.getText().toString())),
-                    spinnerUnidadeDeMedida.getSelectedItem().toString()));
         }
         if (ProductType.getSelectedItem()==SERVIÇO){
             SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");

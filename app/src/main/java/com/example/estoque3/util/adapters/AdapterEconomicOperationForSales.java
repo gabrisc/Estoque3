@@ -42,8 +42,8 @@ public class AdapterEconomicOperationForSales extends RecyclerView.Adapter<Adapt
             holder.sealValue.setText("R$: "+String.valueOf(economicOperation.getSealValue()));holder.name.setText(economicOperation.getName().toUpperCase());
         }else{
             holder.name.setText(economicOperation.getName().toUpperCase());
-            holder.sealValue.setText("Venda: "+String.valueOf(economicOperation.getSealValue())+" R$");holder.name.setText(economicOperation.getName().toUpperCase());
-            holder.quantity.setText("Custo: " +String.valueOf(economicOperation.getExpenseValue())+" R$");
+            holder.sealValue.setText(""+String.valueOf(economicOperation.getSealValue())+" R$");holder.name.setText(economicOperation.getName().toUpperCase());
+            holder.quantity.setText(""+String.valueOf(economicOperation.getExpenseValue())+" R$");
         }
     }
 
