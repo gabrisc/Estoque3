@@ -83,7 +83,8 @@ public class AddSaleActivity extends AppCompatActivity implements AdapterEconomi
     }
 
     private void callDialogForProduct(EconomicOperation economicOperationSelect,int position,Boolean isService){
-        View mDialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_quantity,null);
+        View mDialogView = LayoutInflater.from(this).inflate(R.layout.dialog_delete,null);
+
         TextView textViewMensage = mDialogView.findViewById(R.id.textViewMensage);
         Button buttonAddQuantity =  mDialogView.findViewById(R.id.buttonAddDiscount);
         ImageButton lessB = mDialogView.findViewById(R.id.lessB);

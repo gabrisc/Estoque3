@@ -1,34 +1,23 @@
 package com.example.estoque3.ui.main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import com.example.estoque3.Activity.MainScreens.MainActivity;
 import com.example.estoque3.R;
-import com.example.estoque3.entity.EconomicOperation;
 import com.example.estoque3.entity.Sale;
-import com.example.estoque3.util.adapters.AdapterEconomicOperation;
 import com.example.estoque3.util.adapters.AdapterSales;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.example.estoque3.entity.EconomicOperation.getIdUser;
 import static com.example.estoque3.util.FireBaseConfig.firebaseInstance;
 

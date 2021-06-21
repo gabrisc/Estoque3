@@ -22,7 +22,7 @@ public class Sale {
     private List<EconomicOperationForSaleVo> economicOperationForSaleVoList;
     private String id,date,paymentType;
     private Client client;
-    private Double totalValue,discount;
+    private Double totalValue,discount,gain;
 
     public Sale(String id, String date, Client client, Double totalValue, Double discount) {
         this.id = id;
@@ -101,5 +101,13 @@ public class Sale {
 
     public void setEconomicOperationForSaleVoList(List<EconomicOperationForSaleVo> economicOperationForSaleVoList) {
         this.economicOperationForSaleVoList = economicOperationForSaleVoList;
+    }
+
+    public Double getGain() {
+        return gain;
+    }
+
+    public void setGain(Double gain) {
+        this.gain = gain;
     }
 }
